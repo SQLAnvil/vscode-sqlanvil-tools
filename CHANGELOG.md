@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.8.1...v1.9.0) (2026-04-19)
+
+
+### Features
+
+* add configuration option to override git repository name ([#311](https://github.com/ashish10alex/vscode-dataform-tools/issues/311)) ([51119b4](https://github.com/ashish10alex/vscode-dataform-tools/commit/51119b45a234209d710aed22546cd2e6dcde9c1e))
+* inspect model and its dependencies for a specific filter  ([#312](https://github.com/ashish10alex/vscode-dataform-tools/issues/312)) ([34dea8b](https://github.com/ashish10alex/vscode-dataform-tools/commit/34dea8b608f80be035efb0342bddd09e256e5881))
+
+
+### Bug Fixes
+
+* not picking correct repo and branch name when using git worktrees ([#310](https://github.com/ashish10alex/vscode-dataform-tools/issues/310)) ([c42d709](https://github.com/ashish10alex/vscode-dataform-tools/commit/c42d709451742e86ea90cfe585664c38cf9078d3))
+* warning notifications appear even if user has not specified dataform core version in workflow settings ([#309](https://github.com/ashish10alex/vscode-dataform-tools/issues/309)) ([fe29234](https://github.com/ashish10alex/vscode-dataform-tools/commit/fe2923443367f04637d4958bfe04674f6e0402c4))
+
 ### [1.8.1](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.8.0...v1.8.1) (2026-04-06)
 
 
