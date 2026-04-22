@@ -124,6 +124,10 @@ Officially recommended VS [Code extension for Dataform](https://marketplace.visu
       <td><a href="#tests">Tests</a></td>
       <td>Support to view and run tests. Running test is currently only supported via Dataform CLI.</td>
     </tr>
+    <tr>
+      <td><a href="#dependency_inspector">Dependency Inspector</a></td>
+      <td>Inspect model dependencies, apply filters and run dry runs/queries</td>
+    </tr>
   </tbody>
 </table>
 
@@ -166,6 +170,14 @@ Auto completion of declarations in `${ref("..")}` trigger when <kdb>$<kdb> chara
 ### <a id="formatting">Formatting using sqlfluff</a>
 
 ![formatting](https://raw.githubusercontent.com/ashish10alex/vscode-dataform-tools/main/media/images/formatting.gif)
+
+### <a id="dependency_inspector">Dependency Inspector</a>
+
+Interactive inspector to explore dependencies, apply a common filter across all nested dependencies and perform dry runs or run the queries in BigQuery.
+
+![dependency_inspector_one](https://raw.githubusercontent.com/ashish10alex/vscode-dataform-tools/main/media/images/dependency_inspector_one.png#gh-dark-mode-only)
+
+![dependency_inspector_two](https://raw.githubusercontent.com/ashish10alex/vscode-dataform-tools/main/media/images/dependency_inspector_two.png#gh-dark-mode-only)
 
 ---
 
