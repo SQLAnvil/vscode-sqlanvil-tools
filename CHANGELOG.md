@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.1](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.0...v1.10.1) (2026-04-23)
+
+
+### Features
+
+* when model type is not there filter throws an error ([#314](https://github.com/ashish10alex/vscode-dataform-tools/issues/314)) ([65b2b9e](https://github.com/ashish10alex/vscode-dataform-tools/commit/65b2b9ea6c866f1305def45f3699130b12af0aac))
+
 ## [1.10.0](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.9.0...v1.10.0) (2026-04-23)
 
 
