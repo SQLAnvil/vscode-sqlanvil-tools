@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.9.0...v1.10.0) (2026-04-23)
+
+
+### Features
+
+* **dependency-inspector:** wrap long filter conditions ([#313](https://github.com/ashish10alex/vscode-dataform-tools/issues/313)) ([ce9ee73](https://github.com/ashish10alex/vscode-dataform-tools/commit/ce9ee7352f77c252078c46f68572005e7298e574))
+
 ## [1.9.0](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.8.1...v1.9.0) (2026-04-19)
 
 
