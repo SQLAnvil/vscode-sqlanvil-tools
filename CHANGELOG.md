@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.1...v1.10.2) (2026-05-01)
+
+
+### Features
+
+* **dependency inspector:** add ability to see schema and filter models  ([#315](https://github.com/ashish10alex/vscode-dataform-tools/issues/315)) ([1bc60ad](https://github.com/ashish10alex/vscode-dataform-tools/commit/1bc60ad61c789de4d2c23bf726b906ed2bce8670))
+
 ### [1.10.1](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.0...v1.10.1) (2026-04-23)
 
 
