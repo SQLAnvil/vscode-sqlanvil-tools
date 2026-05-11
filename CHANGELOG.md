@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.4](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.3...v1.10.4) (2026-05-11)
+
+
+### Features
+
+* add function to list workflows ([8d82285](https://github.com/ashish10alex/vscode-dataform-tools/commit/8d822853ab9215513ffbb7eb1fcf36912e7f964e))
+* **inspector:** ability to save filters as json file which can be loaded and shared ([#317](https://github.com/ashish10alex/vscode-dataform-tools/issues/317)) ([539af48](https://github.com/ashish10alex/vscode-dataform-tools/commit/539af4840f18622fe06ba98adeb2b7845921deee))
+* **npm-package:** add getLatestWorkflowInvocation ([66ab8b8](https://github.com/ashish10alex/vscode-dataform-tools/commit/66ab8b88bf79889f1f3340ea931c72e82221667d))
+* **pypi-package:** add get_latest_workflow_invocation ([86f91fa](https://github.com/ashish10alex/vscode-dataform-tools/commit/86f91faa19c0105833e1529d9197ce99224631d3))
+
+
+### Bug Fixes
+
+* **npm-package:** also disable auto-pagination when pageToken is provided ([5356890](https://github.com/ashish10alex/vscode-dataform-tools/commit/535689083a4d21919dc05832ad435dce44441f85))
+
+
+### CI
+
+* add release-please workflow and trusted-publishing setup ([a2cde0e](https://github.com/ashish10alex/vscode-dataform-tools/commit/a2cde0ee66f65341f578327fd9fc5a885a6d84d4))
+* do not publish release notes automatically for npm and pypi packages ([ea6125f](https://github.com/ashish10alex/vscode-dataform-tools/commit/ea6125f3f525525c158a96ea3b131b7bc42fccd2))
+* inline publish jobs into release-please workflow ([#321](https://github.com/ashish10alex/vscode-dataform-tools/issues/321)) ([e0e5cff](https://github.com/ashish10alex/vscode-dataform-tools/commit/e0e5cff98c4dc332d4608f6e69d6797fc66c09e4))
+
 ### [1.10.3](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.2...v1.10.3) (2026-05-01)
 
 
