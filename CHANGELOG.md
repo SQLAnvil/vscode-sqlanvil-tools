@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.5](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.4...v1.10.5) (2026-05-11)
+
+
+### Features
+
+* **dependency graph:** show full graph that can show orphan nodes ([#322](https://github.com/ashish10alex/vscode-dataform-tools/issues/322)) ([ca22b2c](https://github.com/ashish10alex/vscode-dataform-tools/commit/ca22b2c17709436c2ff8819bb7b9d0c4754ef070))
+
 ### [1.10.4](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.3...v1.10.4) (2026-05-11)
 
 
