@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.5...v1.11.0) (2026-05-15)
+
+
+### Features
+
+* **api run:** show the latest api run the compiled query webview along with details of workflow invocation ([#332](https://github.com/ashish10alex/vscode-dataform-tools/issues/332)) ([52b34d2](https://github.com/ashish10alex/vscode-dataform-tools/commit/52b34d2b6fb29ce8658697ee42e30c33fa52ec79))
+* **dependancy graph:** cli to open graph on web browser ([#323](https://github.com/ashish10alex/vscode-dataform-tools/issues/323)) ([7564764](https://github.com/ashish10alex/vscode-dataform-tools/commit/7564764e459f50ceb1222d80f170fee24419a65e))
+* query actions in a workflow invocation ([#324](https://github.com/ashish10alex/vscode-dataform-tools/issues/324)) ([8a1c6ff](https://github.com/ashish10alex/vscode-dataform-tools/commit/8a1c6ff4d519d8f48a9c71eea02c91b0cf49b02e))
+
+
+### Bug Fixes
+
+* **ci:** gate publish jobs on release-PR merge commit subject ([#330](https://github.com/ashish10alex/vscode-dataform-tools/issues/330)) ([865984c](https://github.com/ashish10alex/vscode-dataform-tools/commit/865984c43184bbcd0818ab707d6df84d1b7a2520))
+* compilation override component stays hidden when there is a compilation error ([#333](https://github.com/ashish10alex/vscode-dataform-tools/issues/333)) ([0040000](https://github.com/ashish10alex/vscode-dataform-tools/commit/0040000791650d0a1eac0748c8ef6166df6579c7))
+
 ### [1.10.5](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.4...v1.10.5) (2026-05-11)
 
 
