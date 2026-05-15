@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { WebviewState, CompilationErrorType } from '../types';
-import { ExternalLink, Trash2, Play, RefreshCw, CircleDashed, CheckCircle2, XCircle, Clock } from 'lucide-react';
+import { ExternalLink, Trash2, Play, RefreshCw, CircleDashed, CheckCircle2, XCircle, Clock, ChevronRight, ChevronDown } from 'lucide-react';
 import { vscode } from '../utils/vscode';
+import { TERMINAL_WORKFLOW_STATES } from '../utils/workflowPolling';
 
 interface WorkflowURLsTabProps {
     state: WebviewState;
+    isPolling?: boolean;
 }
 
 const isBlockingError = (errorType?: CompilationErrorType) => {
@@ -13,7 +15,7 @@ const isBlockingError = (errorType?: CompilationErrorType) => {
            errorType === CompilationErrorType.NOT_A_DATAFORM_WORKSPACE;
 };
 
-export function WorkflowURLsTab({ state }: WorkflowURLsTabProps) {
+export function WorkflowURLsTab({ state, isPolling = false }: WorkflowURLsTabProps) {
     useEffect(() => {
         vscode.postMessage({ command: 'getWorkflowUrls' });
     }, []);
@@ -33,19 +35,15 @@ export function WorkflowURLsTab({ state }: WorkflowURLsTabProps) {
     };
 
     const [isRefreshing, setIsRefreshing] = useState(false);
-    const autoRefreshTriggered = useRef(false);
+    const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
 
-    const TERMINAL_STATES = new Set(['SUCCEEDED', 'FAILED', 'CANCELLED']);
-
-    useEffect(() => {
-        if (autoRefreshTriggered.current) { return; }
-        if (!state.workflowUrls || state.workflowUrls.length === 0) { return; }
-        autoRefreshTriggered.current = true;
-        const needsRefresh = state.workflowUrls.some((item) => !item.state || !TERMINAL_STATES.has(item.state));
-        if (needsRefresh) {
-            vscode.postMessage({ command: 'refreshWorkflowStatuses' });
-        }
-    }, [state.workflowUrls]);
+    const toggleRow = (timestamp: number) => {
+        setExpandedRows(prev => {
+            const next = new Set(prev);
+            if (next.has(timestamp)) { next.delete(timestamp); } else { next.add(timestamp); }
+            return next;
+        });
+    };
 
     const handleRefreshStatuses = () => {
         setIsRefreshing(true);
@@ -113,6 +111,69 @@ export function WorkflowURLsTab({ state }: WorkflowURLsTabProps) {
                             </p>
                         </div>
                     </div>
+
+                    {(() => {
+                        const latest = (state.workflowUrls || []).slice().sort((a, b) => b.timestamp - a.timestamp)[0];
+                        if (!latest) { return null; }
+                        const isTerminal = !!latest.state && TERMINAL_WORKFLOW_STATES.has(latest.state);
+                        const elapsedSec = Math.max(0, Math.floor((Date.now() - latest.timestamp) / 1000));
+                        const hasFailures = !!latest.failedActions && latest.failedActions.length > 0;
+                        const showExpanded = expandedRows.has(latest.timestamp);
+                        return (
+                            <div className="mt-3 flex flex-col gap-2 rounded border border-[var(--vscode-widget-border)] bg-[var(--vscode-editorWidget-background)] p-2.5">
+                                <div className="flex items-center gap-2 text-xs">
+                                    {hasFailures ? (
+                                        <button
+                                            onClick={() => toggleRow(latest.timestamp)}
+                                            className="p-0.5 rounded hover:bg-[var(--vscode-toolbar-hoverBackground)] text-[var(--vscode-foreground)]"
+                                            aria-expanded={showExpanded}
+                                            aria-label={showExpanded ? 'Hide failure details' : 'Show failure details'}
+                                            title={showExpanded ? 'Hide failure details' : 'Show failure details'}
+                                        >
+                                            {showExpanded ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
+                                        </button>
+                                    ) : (
+                                        <span className="w-[18px]" aria-hidden />
+                                    )}
+                                    {getStatusIcon(latest.state)}
+                                    <span className="font-mono text-[var(--vscode-foreground)]">
+                                        Latest run: {latest.workspace || '(unknown workspace)'} · {getStatusLabel(latest.state)}
+                                    </span>
+                                    {!isTerminal && (
+                                        <span className="text-[var(--vscode-descriptionForeground)]">· {elapsedSec}s elapsed</span>
+                                    )}
+                                    <button
+                                        onClick={() => vscode.postMessage({ command: 'openExternal', url: latest.url })}
+                                        className="ml-auto text-[var(--vscode-textLink-foreground)] hover:text-[var(--vscode-textLink-activeForeground)] inline-flex items-center gap-1 p-0.5 rounded hover:bg-[var(--vscode-toolbar-hoverBackground)]"
+                                        title="Open in GCP"
+                                        aria-label="Open in GCP"
+                                    >
+                                        <ExternalLink className="w-3.5 h-3.5" />
+                                    </button>
+                                </div>
+                                {hasFailures && showExpanded && (
+                                    <div className="overflow-x-auto">
+                                        <table className="min-w-full text-xs border border-[var(--vscode-widget-border)] rounded">
+                                            <thead>
+                                                <tr className="bg-[var(--vscode-sideBar-background)]">
+                                                    <th className="px-3 py-1.5 text-left font-medium text-[var(--vscode-descriptionForeground)]">Target</th>
+                                                    <th className="px-3 py-1.5 text-left font-medium text-[var(--vscode-descriptionForeground)]">Failure Reason</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {latest.failedActions!.map((fa, i) => (
+                                                    <tr key={i} className="border-t border-[var(--vscode-widget-border)] align-top">
+                                                        <td className="px-3 py-1.5 font-mono text-[var(--vscode-foreground)] break-all">{fa.target}</td>
+                                                        <td className="px-3 py-1.5 text-[var(--vscode-errorForeground)] whitespace-pre-wrap break-words">{fa.failureReason}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })()}
                 </div>
             )}
 
@@ -126,7 +187,7 @@ export function WorkflowURLsTab({ state }: WorkflowURLsTabProps) {
                                 className="flex items-center space-x-1 px-2 py-1 text-xs text-[var(--vscode-textLink-foreground)] hover:bg-[var(--vscode-toolbar-hoverBackground)] rounded transition-colors"
                                 title="Refresh execution statuses"
                             >
-                                <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
+                                <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing || isPolling ? 'animate-spin' : ''}`} />
                                 <span>Refresh Status</span>
                             </button>
                             <button
@@ -152,6 +213,7 @@ export function WorkflowURLsTab({ state }: WorkflowURLsTabProps) {
                     <table className="min-w-full text-sm">
                         <thead>
                             <tr className="bg-[var(--vscode-sideBar-background)] border-b border-[var(--vscode-widget-border)]">
+                                <th className="px-2 py-2 w-8" aria-label="Expand row" />
                                 <th className="px-4 py-2 text-left font-medium text-[var(--vscode-descriptionForeground)] w-1/4">Time</th>
                                 <th className="px-4 py-2 text-left font-medium text-[var(--vscode-descriptionForeground)]">Target Workspace</th>
                                 <th className="px-4 py-2 text-left font-medium text-[var(--vscode-descriptionForeground)]">Action</th>
@@ -163,8 +225,26 @@ export function WorkflowURLsTab({ state }: WorkflowURLsTabProps) {
                         </thead>
                         <tbody>
                             {urls.slice().reverse().map((item) => {
+                                const isExpanded = expandedRows.has(item.timestamp);
+                                const hasFailures = !!item.failedActions && item.failedActions.length > 0;
                                 return (
-                                <tr key={item.timestamp} className="border-b border-[var(--vscode-widget-border)] last:border-0 hover:bg-[var(--vscode-toolbar-hoverBackground)]">
+                                <Fragment key={item.timestamp}>
+                                <tr className="border-b border-[var(--vscode-widget-border)] last:border-0 hover:bg-[var(--vscode-toolbar-hoverBackground)]">
+                                    <td className="px-2 py-2 w-8 align-middle">
+                                        {hasFailures && (
+                                            <button
+                                                onClick={() => toggleRow(item.timestamp)}
+                                                className="p-0.5 rounded hover:bg-[var(--vscode-toolbar-hoverBackground)] text-[var(--vscode-foreground)]"
+                                                title={isExpanded ? 'Hide failed models' : 'Show failed models'}
+                                                aria-expanded={isExpanded}
+                                                aria-label={isExpanded ? 'Hide failed models' : 'Show failed models'}
+                                            >
+                                                {isExpanded
+                                                    ? <ChevronDown className="w-3.5 h-3.5" />
+                                                    : <ChevronRight className="w-3.5 h-3.5" />}
+                                            </button>
+                                        )}
+                                    </td>
                                     <td className="px-4 py-2 text-[var(--vscode-descriptionForeground)] whitespace-nowrap text-xs">
                                         {new Date(item.timestamp).toLocaleString()}
                                     </td>
@@ -266,6 +346,35 @@ export function WorkflowURLsTab({ state }: WorkflowURLsTabProps) {
                                         </button>
                                     </td>
                                 </tr>
+                                {hasFailures && isExpanded && (
+                                    <tr className="bg-[var(--vscode-editorWidget-background)] border-b border-[var(--vscode-widget-border)]">
+                                        <td />
+                                        <td colSpan={7} className="px-4 py-3">
+                                            <div className="text-xs font-medium text-[var(--vscode-foreground)] mb-2">
+                                                Failed models ({item.failedActions!.length})
+                                            </div>
+                                            <div className="overflow-x-auto">
+                                                <table className="min-w-full text-xs border border-[var(--vscode-widget-border)] rounded">
+                                                    <thead>
+                                                        <tr className="bg-[var(--vscode-sideBar-background)]">
+                                                            <th className="px-3 py-1.5 text-left font-medium text-[var(--vscode-descriptionForeground)]">Target</th>
+                                                            <th className="px-3 py-1.5 text-left font-medium text-[var(--vscode-descriptionForeground)]">Failure Reason</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {item.failedActions!.map((fa, i) => (
+                                                            <tr key={i} className="border-t border-[var(--vscode-widget-border)] align-top">
+                                                                <td className="px-3 py-1.5 font-mono text-[var(--vscode-foreground)] break-all">{fa.target}</td>
+                                                                <td className="px-3 py-1.5 text-[var(--vscode-errorForeground)] whitespace-pre-wrap break-words">{fa.failureReason}</td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )}
+                                </Fragment>
                                 );
                             })}
                         </tbody>
