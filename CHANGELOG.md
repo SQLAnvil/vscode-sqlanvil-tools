@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.1](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.12.0...v1.12.1) (2026-05-19)
+
+
+### Bug Fixes
+
+* **settings:** if there is a regex check for a config option, user is trapped in it  once start editing it ([#335](https://github.com/ashish10alex/vscode-dataform-tools/issues/335)) ([830c56c](https://github.com/ashish10alex/vscode-dataform-tools/commit/830c56c10a62cbc1b86e50333336ea848bffd69b))
+
 ## [1.12.0](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.11.0...v1.12.0) (2026-05-15)
 
 ## [1.11.0](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.10.5...v1.11.0) (2026-05-15)
