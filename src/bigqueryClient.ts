@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { logger } from './logger';
 import { BigQuery, BigQueryOptions } from '@google-cloud/bigquery';
 
 let bigquery: BigQuery | undefined;
@@ -18,6 +19,8 @@ export async function createBigQueryClient(): Promise<string | undefined> {
             const projectId : string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('gcpProjectId');
             const gcpLocation : string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('gcpLocation');
             const serviceAccountJsonPath : string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('serviceAccountJsonPath');
+
+            logger.info(`Creating BigQuery client with Project ID: ${projectId}, Location: ${gcpLocation}, Service Account JSON Path: ${serviceAccountJsonPath}`);
 
             let options: BigQueryOptions = {};
             if(projectId && projectId.trim() !== ''){
