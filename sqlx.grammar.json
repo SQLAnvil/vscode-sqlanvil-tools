@@ -3,6 +3,9 @@
     "name": "sqlx",
     "patterns": [
       {
+        "include": "#strings"
+      },
+      {
         "include": "source.sql"
       },
       {
@@ -482,7 +485,7 @@
             }
           },
           "comment": "this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.",
-          "match": "(')[^'\\\\]*(')",
+          "match": "(')(?:[^'\\\\]|\\\\.)*(')",
           "name": "string.quoted.single.sql"
         },
         {
@@ -535,7 +538,7 @@
             }
           },
           "comment": "this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.",
-          "match": "(`)[^`\\\\]*(`)",
+          "match": "(`)(?:[^`\\\\]|\\\\.)*(`)",
           "name": "string.quoted.other.backtick.sql"
         },
         {
@@ -568,7 +571,7 @@
             }
           },
           "comment": "this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.",
-          "match": "(\")[^\"#]*(\")",
+          "match": "(\")(?:[^\"#\\\\]|\\\\.)*(\")",
           "name": "string.quoted.double.sql"
         },
         {
