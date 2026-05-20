@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.3](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.12.2...v1.12.3) (2026-05-20)
+
+
+### Bug Fixes
+
+* write compilerOptions back to its existing settings scope ([#338](https://github.com/ashish10alex/vscode-dataform-tools/issues/338)) ([2483b94](https://github.com/ashish10alex/vscode-dataform-tools/commit/2483b9420655bc2cf0da14036b97c2d65d9880cf))
+
 ### [1.12.2](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.12.1...v1.12.2) (2026-05-19)
 
 
