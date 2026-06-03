@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.12.5](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.12.4...v1.12.5) (2026-06-03)
+
+
+### Features
+
+* add run tags button to compiled query webview ([#334](https://github.com/ashish10alex/vscode-dataform-tools/issues/334)) ([626821e](https://github.com/ashish10alex/vscode-dataform-tools/commit/626821e89b966ca9b8dafe37d7f73d39cba9b152))
+
 ### [1.12.4](https://github.com/ashish10alex/vscode-dataform-tools/compare/v1.12.3...v1.12.4) (2026-06-02)
 
 
