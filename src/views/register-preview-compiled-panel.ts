@@ -4,6 +4,7 @@ import { compiledQueryWtDryRun, dryRunAndShowDiagnostics, formatBytes, gatherQue
 import path from "path";
 import { getLiniageMetadata } from "../getLineageMetadata";
 import { runCurrentFile } from "../runCurrentFile";
+import { runTagWtApi } from "../runTag";
 import { runTests } from "../runTests";
 import { ColumnMetadata,  Column, ActionDescription, CurrentFileMetadata, SupportedCurrency, BigQueryDryRunResponse, WebviewMessage, WorkflowUrlEntry, ActionCounts, WorkflowAction, CompilationErrorType, SchemaMetadata, CachedResults, DryRunAnnotation } from "../types";
 import { currencySymbolMapping, executablesToCheck } from "../constants";
@@ -391,6 +392,24 @@ export class CompiledQueryPanel {
                 messageDict = { ...messageDict, "workflowInvocationUrlGCP": workflowInvocationUrlGCP, "errorWorkflowInvocation": errorWorkflowInvocation, "apiUrlLoading": false, "workflowUrls": updatedWorkflowUrls };
                 this.centerPanel?.webviewPanel.webview.postMessage(messageDict);
                 return;
+              case 'runTagApi': {
+                const tagsToRun: string[] = Array.isArray(message.value.selectedTags)
+                    ? message.value.selectedTags.filter((t: unknown): t is string => typeof t === 'string' && t.trim() !== '')
+                    : [];
+                if (tagsToRun.length === 0) { return; }
+                const includeDependencies = !!message.value.includeDependencies;
+                const includeDependents = !!message.value.includeDependents;
+                const fullRefresh = !!message.value.fullRefresh;
+                await runTagWtApi(
+                    extensionContext,
+                    tagsToRun,
+                    includeDependencies,
+                    includeDependents,
+                    fullRefresh,
+                    'api',
+                );
+                return;
+              }
               case 'costEstimator': {
 
                 const selectedTags: string[] = message.value.selectedTags;
