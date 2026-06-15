@@ -10,7 +10,7 @@ class Logger {
     }
 
     public initialize() {
-        this.enabled = vscode.workspace.getConfiguration('vscode-dataform-tools').get('enableLogging') || false;
+        this.enabled = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('enableLogging') || false;
         if (this.enabled) {
             this.info('Logging initialized');
         }

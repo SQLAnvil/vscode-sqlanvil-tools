@@ -51,7 +51,7 @@ export async function queryDryRun(query: string): Promise<BigQueryDryRunResponse
     };
     */
 
-    let currencyFoDryRunCost: SupportedCurrency | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('currencyFoDryRunCost');
+    let currencyFoDryRunCost: SupportedCurrency | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('currencyFoDryRunCost');
     if (!currencyFoDryRunCost) {
         currencyFoDryRunCost = "USD" as SupportedCurrency;
     }

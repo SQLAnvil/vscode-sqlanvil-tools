@@ -36,7 +36,7 @@ export let dataformCodeActionProviderDisposable = () => vscode.languages.registe
             }
             const fixAction = new vscode.CodeAction(`Replace with ${fix}`, vscode.CodeActionKind.QuickFix);
             fixAction.command = {
-                command: 'vscode-dataform-tools.fixError',
+                command: 'vscode-sqlanvil-tools.fixError',
                 title: 'Apply dry run suggestion',
                 tooltip: 'Apply dry run suggestion',
                 arguments: [document, diagnostic.range, diagnostic.message]

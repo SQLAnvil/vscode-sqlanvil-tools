@@ -24,7 +24,7 @@ export const sourcesAutoCompletionDisposable = () => vscode.languages.registerCo
             if (declarationsAndTargets.length === 0) {
                 return undefined;
             }
-            let sourceAutoCompletionPreference = vscode.workspace.getConfiguration('vscode-dataform-tools').get('sourceAutoCompletionPreference');
+            let sourceAutoCompletionPreference = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('sourceAutoCompletionPreference');
 
             let sourceCompletionItems: vscode.CompletionItem[] = [];
 

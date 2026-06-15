@@ -40,14 +40,14 @@ async function updateSchemaAutoCompletions(currentFileMetadata:any) {
 export function registerCompiledQueryPanel(context: ExtensionContext) {
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.showCompiledQueryInWebView', async() => {
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.showCompiledQueryInWebView', async() => {
             const currentFileMetadata = CompiledQueryPanel?.centerPanel?.currentFileMetadata;
             CompiledQueryPanel.getInstance(context.extensionUri, context, true, false, currentFileMetadata);
         })
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.refreshWorkflowUrls', () => {
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.refreshWorkflowUrls', () => {
             if (CompiledQueryPanel.centerPanel?.webviewPanel) {
                 const workflowUrls = context.workspaceState.get<WorkflowUrlEntry[]>('dataform_workflow_urls') || [];
                 CompiledQueryPanel.centerPanel.webviewPanel.webview.postMessage({
@@ -84,7 +84,7 @@ export function registerCompiledQueryPanel(context: ExtensionContext) {
         }
         activeEditorFileName = document?.fileName;
         activeDocumentObj = document;
-        const showCompiledQueryInVerticalSplitOnSave: boolean | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('showCompiledQueryInVerticalSplitOnSave');
+        const showCompiledQueryInVerticalSplitOnSave: boolean | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('showCompiledQueryInVerticalSplitOnSave');
         if (showCompiledQueryInVerticalSplitOnSave || (CompiledQueryPanel?.centerPanel?.centerPanelDisposed === false)) {
             if (CompiledQueryPanel?.centerPanel?.webviewPanel?.visible) {
                 const workspaceFolder = await getWorkspaceFolder();
@@ -136,7 +136,7 @@ export class CompiledQueryPanel {
 
     public static async getInstance(extensionUri: Uri, extensionContext: ExtensionContext, freshCompilation:boolean, forceShowInVeritcalSplit:boolean, currentFileMetadata:any) {
         if(CompiledQueryPanel.centerPanel && !this.centerPanel?.centerPanelDisposed){
-            const showCompiledQueryInVerticalSplitOnSave:boolean | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('showCompiledQueryInVerticalSplitOnSave');
+            const showCompiledQueryInVerticalSplitOnSave:boolean | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('showCompiledQueryInVerticalSplitOnSave');
             if(!showCompiledQueryInVerticalSplitOnSave && !forceShowInVeritcalSplit){
                 if (CompiledQueryPanel?.centerPanel?.webviewPanel){
                     CompiledQueryPanel.centerPanel.webviewPanel.dispose();
@@ -145,7 +145,7 @@ export class CompiledQueryPanel {
             }
             CompiledQueryPanel.centerPanel.sendUpdateToView(showCompiledQueryInVerticalSplitOnSave, forceShowInVeritcalSplit, currentFileMetadata, freshCompilation);
         } else {
-            const showCompiledQueryInVerticalSplitOnSave:boolean | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('showCompiledQueryInVerticalSplitOnSave');
+            const showCompiledQueryInVerticalSplitOnSave:boolean | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('showCompiledQueryInVerticalSplitOnSave');
             if(!showCompiledQueryInVerticalSplitOnSave && showCompiledQueryInVerticalSplitOnSave !== undefined && !forceShowInVeritcalSplit){
                 let currentFileMetadata = await getCurrentFileMetadata(freshCompilation);
                 if (!currentFileMetadata) {
@@ -308,11 +308,11 @@ export class CompiledQueryPanel {
                 return;
               case 'selectWorkspaceFolder':
                 await selectWorkspaceFolder();
-                vscode.commands.executeCommand("vscode-dataform-tools.showCompiledQueryInWebView");
+                vscode.commands.executeCommand("vscode-sqlanvil-tools.showCompiledQueryInWebView");
                 return;
               case 'updateCompilerOptions': {
                 const compilerOptions = message.value;
-                const config = vscode.workspace.getConfiguration('vscode-dataform-tools');
+                const config = vscode.workspace.getConfiguration('vscode-sqlanvil-tools');
                 // Respect where the user has already configured `compilerOptions`.
                 // VS Code's `update()` default writes to Workspace settings, which
                 // leaks team-shared `.vscode/settings.json` when the user
@@ -327,14 +327,14 @@ export class CompiledQueryPanel {
                 return;
               }
               case 'dependencyGraph':
-                await vscode.commands.executeCommand("vscode-dataform-tools.dependencyGraphPanel");
+                await vscode.commands.executeCommand("vscode-sqlanvil-tools.dependencyGraphPanel");
                 return;
               case 'dependencyInspector':
-                await vscode.commands.executeCommand("vscode-dataform-tools.dependencyInspector");
+                await vscode.commands.executeCommand("vscode-sqlanvil-tools.dependencyInspector");
                 return;
               case 'previewResults':
                 if(message.value){
-                    await vscode.commands.executeCommand('vscode-dataform-tools.runQuery');
+                    await vscode.commands.executeCommand('vscode-sqlanvil-tools.runQuery');
                 }
                 return;
               case 'runTests': {
@@ -484,7 +484,7 @@ export class CompiledQueryPanel {
                 }
                 return;
               case 'lintCurrentFile':
-                await vscode.commands.executeCommand('vscode-dataform-tools.lintCurrentFile');
+                await vscode.commands.executeCommand('vscode-sqlanvil-tools.lintCurrentFile');
                 return;
               case 'lineageMetadata': {
                 const fileMetadata  = this.centerPanel?._cachedResults?.fileMetadata;
@@ -554,10 +554,10 @@ export class CompiledQueryPanel {
                 });
                 return;
               case 'runFilesTagsWtOptionsApi':
-                await vscode.commands.executeCommand('vscode-dataform-tools.runFilesTagsWtOptionsApi');
+                await vscode.commands.executeCommand('vscode-sqlanvil-tools.runFilesTagsWtOptionsApi');
                 return;
               case 'runFilesTagsWtOptionsInRemoteWorkspace':
-                await vscode.commands.executeCommand('vscode-dataform-tools.runFilesTagsWtOptionsInRemoteWorkspace');
+                await vscode.commands.executeCommand('vscode-sqlanvil-tools.runFilesTagsWtOptionsInRemoteWorkspace');
                 return;
               case 'refreshWorkflowStatuses':
                 const urlsToRefresh = this.centerPanel?.extensionContext.workspaceState.get<WorkflowUrlEntry[]>('dataform_workflow_urls') || [];
@@ -657,7 +657,7 @@ export class CompiledQueryPanel {
     //@ts-ignore
     private async sendUpdateToView(showCompiledQueryInVerticalSplitOnSave:boolean | undefined, forceShowInVeritcalSplit:boolean, curFileMeta:CurrentFileMetadata|undefined, freshCompilation: boolean = true) {
         const webview = this.webviewPanel.webview;
-        const compilerOptions = vscode.workspace.getConfiguration('vscode-dataform-tools').get<string>('compilerOptions');
+        const compilerOptions = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get<string>('compilerOptions');
         const workflowUrls = this.extensionContext.workspaceState.get<WorkflowUrlEntry[]>('dataform_workflow_urls') || [];
 
         const workspaceFolder = await getWorkspaceFolder();
@@ -1266,7 +1266,7 @@ export class CompiledQueryPanel {
     }
 
     private async updateView(forceShowInVeritcalSplit:boolean, currentFileMetadata:any, freshCompilation: boolean = true) {
-        const showCompiledQueryInVerticalSplitOnSave:boolean | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('showCompiledQueryInVerticalSplitOnSave');
+        const showCompiledQueryInVerticalSplitOnSave:boolean | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('showCompiledQueryInVerticalSplitOnSave');
         let webview = await this.sendUpdateToView(showCompiledQueryInVerticalSplitOnSave, forceShowInVeritcalSplit, currentFileMetadata, freshCompilation);
         if(webview){
             // this.webviewPanel.webview.html = this._getHtmlForWebview(webview);

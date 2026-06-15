@@ -65,7 +65,7 @@ export function findExecutableInPaths(executableName: string): string | null {
 // Get user-specified exact path for executable
 function getSpecificExecutablePath(executableName: string): string | null {
     try {
-        const vscodeConfig = vscode.workspace.getConfiguration('vscode-dataform-tools');
+        const vscodeConfig = vscode.workspace.getConfiguration('vscode-sqlanvil-tools');
         const configKey = `${executableName}ExecutablePath`;
         const specificPath = vscodeConfig.get<string>(configKey);
 
@@ -241,8 +241,8 @@ export function debugExecutablePaths(): void {
 }
 
 export function getSqlfluffConfigPathFromSettings() {
-    let defaultSqlfluffConfigPath = ".vscode-dataform-tools/.sqlfluff";
-    let sqlfluffConfigPath: string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('sqlfluffConfigPath');
+    let defaultSqlfluffConfigPath = ".vscode-sqlanvil-tools/.sqlfluff";
+    let sqlfluffConfigPath: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('sqlfluffConfigPath');
     if (sqlfluffConfigPath) {
         if (isRunningOnWindows) {
             sqlfluffConfigPath = path.win32.normalize(sqlfluffConfigPath);
@@ -257,7 +257,7 @@ export function getSqlfluffConfigPathFromSettings() {
 
 export function getSqlfluffExecutablePathFromSettings() {
     let defaultSqlfluffExecutablePath = "sqlfluff";
-    let sqlfluffExecutablePath: string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('sqlfluffExecutablePath');
+    let sqlfluffExecutablePath: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('sqlfluffExecutablePath');
     logger.debug(`sqlfluffExecutablePath: ${sqlfluffExecutablePath}`);
     if (sqlfluffExecutablePath !== defaultSqlfluffExecutablePath && sqlfluffExecutablePath !== undefined) {
         if (isRunningOnWindows) {

@@ -42,7 +42,7 @@ export async function sendWorkflowInvocationNotification(
         }
 
         await context.workspaceState.update('dataform_workflow_urls', storedUrls);
-        vscode.commands.executeCommand('vscode-dataform-tools.refreshWorkflowUrls');
+        vscode.commands.executeCommand('vscode-sqlanvil-tools.refreshWorkflowUrls');
     }
     vscode.window.showInformationMessage(
         `Workflow invocation created`,
@@ -294,7 +294,7 @@ export async function syncAndrunDataformRemotely(progress: vscode.Progress<{ mes
             return;
         }
 
-        const gcpProjectIdOveride = vscode.workspace.getConfiguration('vscode-dataform-tools').get('gcpProjectId');
+        const gcpProjectIdOveride = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('gcpProjectId');
         const gcpProjectId = (gcpProjectIdOveride || CACHED_COMPILED_DATAFORM_JSON.projectConfig.defaultDatabase) as string;
         if (!gcpProjectId) {
             vscode.window.showErrorMessage(`Unable to determine GCP project ID in Dataform config`);
@@ -336,7 +336,7 @@ export async function syncAndrunDataformRemotely(progress: vscode.Progress<{ mes
 
         // 2
         progress.report({ message: 'Initializing Dataform client...', increment: 14.28 });
-        const serviceAccountJsonPath  = vscode.workspace.getConfiguration('vscode-dataform-tools').get('serviceAccountJsonPath');
+        const serviceAccountJsonPath  = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('serviceAccountJsonPath');
         let clientOptions = { projectId: gcpProjectId };
         if(serviceAccountJsonPath){
             vscode.window.showInformationMessage(`Using service account at: ${serviceAccountJsonPath}`);

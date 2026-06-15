@@ -129,7 +129,7 @@ export class CustomViewProvider implements vscode.WebviewViewProvider {
                 }
                 return;
               case 'runBigQueryJob':
-                await vscode.commands.executeCommand('vscode-dataform-tools.runQuery');
+                await vscode.commands.executeCommand('vscode-sqlanvil-tools.runQuery');
                 return;
               case 'backToSummary':
                 if (this._cachedMultiResults) {

@@ -56,7 +56,7 @@ export async function dryRunAndShowDiagnostics(curFileMeta: any, document: vscod
     }
 
     if (showCompiledQueryInVerticalSplitOnSave !== true) {
-        showCompiledQueryInVerticalSplitOnSave = vscode.workspace.getConfiguration('vscode-dataform-tools').get('showCompiledQueryInVerticalSplitOnSave');
+        showCompiledQueryInVerticalSplitOnSave = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('showCompiledQueryInVerticalSplitOnSave');
     }
 
     const type = curFileMeta.fileMetadata.queryMeta.type;
@@ -66,7 +66,7 @@ export async function dryRunAndShowDiagnostics(curFileMeta: any, document: vscod
         return table.type === "test";
     });
 
-    const skipPreOpsInDryRun = vscode.workspace.getConfiguration('vscode-dataform-tools').get('skipPreOpsInDryRun');
+    const skipPreOpsInDryRun = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('skipPreOpsInDryRun');
     logger.debug(`skipPreOpsInDryRun: ${skipPreOpsInDryRun}`);
 
 

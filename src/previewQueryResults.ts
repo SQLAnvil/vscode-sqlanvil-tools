@@ -13,7 +13,7 @@ export async function runQueryInPanel(queryWtType: QueryWtType, queryResultsView
 
 export function getQueryStringForPreview(fileMetadata: TablesWtFullQuery, isIncremental: boolean, skipPreOps?: boolean): string {
     if (skipPreOps === undefined) {
-        skipPreOps = vscode.workspace.getConfiguration('vscode-dataform-tools').get('skipPreOpsInPreviewQuery') ?? false;
+        skipPreOps = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('skipPreOpsInPreviewQuery') ?? false;
     }
     const preOpsQuery = skipPreOps ? "" : fileMetadata.queryMeta.preOpsQuery;
     const incrementalPreOpsQuery = skipPreOps ? "" : fileMetadata.queryMeta.incrementalPreOpsQuery;

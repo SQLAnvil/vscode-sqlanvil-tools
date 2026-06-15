@@ -162,7 +162,7 @@ function getHoverOfVariableInJsFileOrBlock(code: string, searchTerm:string): vsc
  * just want best-effort metadata (e.g. hover providers).
  */
 export async function fetchTableMetadata(projectId: string, datasetId: string, tableId: string) {
-  const serviceAccountJsonPath = vscode.workspace.getConfiguration('vscode-dataform-tools').get('serviceAccountJsonPath');
+  const serviceAccountJsonPath = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('serviceAccountJsonPath');
   let options: { projectId: string; keyFilename?: string } = { projectId };
   if (serviceAccountJsonPath) {
     options = { ...options, keyFilename: serviceAccountJsonPath as string };

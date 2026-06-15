@@ -11,7 +11,7 @@ export class AssertionRunnerCodeLensProvider implements vscode.CodeLensProvider 
         const range = new vscode.Range(i, 0, i, 0);
         const codeLens = new vscode.CodeLens(range, {
           title: '▶ Run assertions',
-          command: 'vscode-dataform-tools.runAssertions',
+          command: 'vscode-sqlanvil-tools.runAssertions',
           arguments: [document.uri, i]
         });
         codeLenses.push(codeLens);
@@ -19,7 +19,7 @@ export class AssertionRunnerCodeLensProvider implements vscode.CodeLensProvider 
         const range = new vscode.Range(i, 0, i, 0);
         const codeLens = new vscode.CodeLens(range, {
           title: '▶ Run assertion',
-          command: 'vscode-dataform-tools.runQuery',
+          command: 'vscode-sqlanvil-tools.runQuery',
           arguments: [document.uri, i]
         });
         codeLenses.push(codeLens);
@@ -39,7 +39,7 @@ export class TagsRunnerCodeLensProvider implements vscode.CodeLensProvider {
         const range = new vscode.Range(i, 0, i, 0);
         const codeLens = new vscode.CodeLens(range, {
           title: '▶ Run Tag',
-          command: 'vscode-dataform-tools.runFilesTagsWtOptions',
+          command: 'vscode-sqlanvil-tools.runFilesTagsWtOptions',
           arguments: [document.uri, i]
         });
         codeLenses.push(codeLens);

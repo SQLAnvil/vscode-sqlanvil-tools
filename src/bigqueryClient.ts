@@ -16,9 +16,9 @@ export async function createBigQueryClient(): Promise<string | undefined> {
 
     clientCreationPromise = (async () => {
         try {
-            const projectId : string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('gcpProjectId');
-            const gcpLocation : string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('gcpLocation');
-            const serviceAccountJsonPath : string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('serviceAccountJsonPath');
+            const projectId : string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('gcpProjectId');
+            const gcpLocation : string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('gcpLocation');
+            const serviceAccountJsonPath : string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('serviceAccountJsonPath');
 
             logger.info(`Creating BigQuery client with Project ID: ${projectId}, Location: ${gcpLocation}, Service Account JSON Path: ${serviceAccountJsonPath}`);
 
@@ -77,7 +77,7 @@ export async function checkAuthentication(): Promise<string | undefined> {
         return await createBigQueryClient();
     }
 
-    const useIntervalCheck = vscode.workspace.getConfiguration('vscode-dataform-tools').get('bigqueryAuthenticationCheck', true);
+    const useIntervalCheck = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('bigqueryAuthenticationCheck', true);
 
     if (useIntervalCheck) {
         const timeSinceLastCheck = Date.now() - lastAuthCheck;
@@ -98,7 +98,7 @@ export function getBigQueryClient(): BigQuery | undefined {
 }
 
 export function setAuthenticationCheckInterval() {
-    const useIntervalCheck = vscode.workspace.getConfiguration('vscode-dataform-tools').get('bigqueryAuthenticationCheck', true);
+    const useIntervalCheck = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('bigqueryAuthenticationCheck', true);
 
     clearAuthenticationCheckInterval();
 

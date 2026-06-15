@@ -108,7 +108,7 @@ export async function runTagWtApi(context: vscode.ExtensionContext, tagsToRun: s
     let workspaceFolder = await getWorkspaceFolder();
     if (!workspaceFolder) { return; }
 
-    const gcpProjectIdOveride = vscode.workspace.getConfiguration('vscode-dataform-tools').get('gcpProjectId');
+    const gcpProjectIdOveride = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('gcpProjectId');
     const projectId = (gcpProjectIdOveride || CACHED_COMPILED_DATAFORM_JSON?.projectConfig.defaultDatabase) as string | undefined;
     if(!projectId){
         vscode.window.showErrorMessage(`Unable to determine GCP project Id in Dataform config`);

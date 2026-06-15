@@ -365,7 +365,7 @@ export async function getDataformTags(compiledJson: DataformCompiledJson) {
 
 export async function getDependenciesAutoCompletionItems(compiledJson: DataformCompiledJson) {
 
-    let sourceAutoCompletionPreference = vscode.workspace.getConfiguration('vscode-dataform-tools').get('sourceAutoCompletionPreference');
+    let sourceAutoCompletionPreference = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('sourceAutoCompletionPreference');
 
     let targets = compiledJson.targets;
     let declarations = compiledJson.declarations;

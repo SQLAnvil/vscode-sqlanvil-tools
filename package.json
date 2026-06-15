@@ -64,152 +64,152 @@
         ],
         "commands": [
             {
-                "command": "vscode-dataform-tools.runQuery",
+                "command": "vscode-sqlanvil-tools.runQuery",
                 "category": "SQLAnvil",
                 "title": "Preview query results"
             },
             {
-                "command": "vscode-dataform-tools.cancelQuery",
+                "command": "vscode-sqlanvil-tools.cancelQuery",
                 "category": "SQLAnvil",
                 "title": "Cancel query"
             },
             {
-                "command": "vscode-dataform-tools.runFilesTagsWtOptions",
+                "command": "vscode-sqlanvil-tools.runFilesTagsWtOptions",
                 "category": "SQLAnvil",
                 "title": "Run file(s) / tag(s) with options"
             },
             {
-                "command": "vscode-dataform-tools.runFilesTagsWtOptionsApi",
+                "command": "vscode-sqlanvil-tools.runFilesTagsWtOptionsApi",
                 "category": "SQLAnvil",
                 "title": "Run file(s) / tag(s) with options using API"
             },
             {
-                "command": "vscode-dataform-tools.createNewDataformProject",
+                "command": "vscode-sqlanvil-tools.createNewDataformProject",
                 "category": "SQLAnvil",
                 "title": "create new SQLAnvil project"
             },
             {
-                "command": "vscode-dataform-tools.runTag",
+                "command": "vscode-sqlanvil-tools.runTag",
                 "category": "SQLAnvil",
                 "title": "Run a tag"
             },
             {
-                "command": "vscode-dataform-tools.runTagWtDeps",
+                "command": "vscode-sqlanvil-tools.runTagWtDeps",
                 "category": "SQLAnvil",
                 "title": "Run a tag with dependencies"
             },
             {
-                "command": "vscode-dataform-tools.runTagWtDownstreamDeps",
+                "command": "vscode-sqlanvil-tools.runTagWtDownstreamDeps",
                 "category": "SQLAnvil",
                 "title": "Run a tag with dependents"
             },
             {
-                "command": "vscode-dataform-tools.runTagWtApi",
+                "command": "vscode-sqlanvil-tools.runTagWtApi",
                 "category": "SQLAnvil",
                 "title": "Run a tag using API"
             },
             {
-                "command": "vscode-dataform-tools.runTagWtDependenciesApi",
+                "command": "vscode-sqlanvil-tools.runTagWtDependenciesApi",
                 "category": "SQLAnvil",
                 "title": "Run tag with dependencies using API"
             },
             {
-                "command": "vscode-dataform-tools.runTagWtDependentsApi",
+                "command": "vscode-sqlanvil-tools.runTagWtDependentsApi",
                 "category": "SQLAnvil",
                 "title": "Run tag with dependents using API"
             },
             {
-                "command": "vscode-dataform-tools.runAssertions",
+                "command": "vscode-sqlanvil-tools.runAssertions",
                 "category": "SQLAnvil",
                 "title": "Run assertions in the current model"
             },
             {
-                "command": "vscode-dataform-tools.runCurrentFileWtDownstreamDeps",
+                "command": "vscode-sqlanvil-tools.runCurrentFileWtDownstreamDeps",
                 "category": "SQLAnvil",
                 "title": "Run current file with dependents"
             },
             {
-                "command": "vscode-dataform-tools.runCurrentFile",
+                "command": "vscode-sqlanvil-tools.runCurrentFile",
                 "category": "SQLAnvil",
                 "title": "Run current file",
                 "icon": "$(play)",
                 "group": "navigation"
             },
             {
-                "command": "vscode-dataform-tools.runCurrentFileWtDependenciesApi",
+                "command": "vscode-sqlanvil-tools.runCurrentFileWtDependenciesApi",
                 "category": "SQLAnvil",
                 "title": "Run current file with Dependencies using API",
                 "group": "navigation"
             },
             {
-                "command": "vscode-dataform-tools.runCurrentFileWtDependentsApi",
+                "command": "vscode-sqlanvil-tools.runCurrentFileWtDependentsApi",
                 "category": "SQLAnvil",
                 "title": "Run current file with Dependents using API",
                 "group": "navigation"
             },
             {
-                "command": "vscode-dataform-tools.runFilesTagsWtOptionsInRemoteWorkspace",
+                "command": "vscode-sqlanvil-tools.runFilesTagsWtOptionsInRemoteWorkspace",
                 "category": "SQLAnvil",
                 "title": "Run file(s) / tag(s) with options using API in remote workspace [beta]",
                 "group": "navigation"
             },
             {
-                "command": "vscode-dataform-tools.runCurrentFileWtApi",
+                "command": "vscode-sqlanvil-tools.runCurrentFileWtApi",
                 "category": "SQLAnvil",
                 "title": "Run current file with API",
                 "group": "navigation"
             },
             {
-                "command": "vscode-dataform-tools.runCurrentFileWtDeps",
+                "command": "vscode-sqlanvil-tools.runCurrentFileWtDeps",
                 "category": "SQLAnvil",
                 "title": "Run current file with dependencies"
             },
             {
-                "command": "vscode-dataform-tools.showCompiledQueryWtDryRun",
+                "command": "vscode-sqlanvil-tools.showCompiledQueryWtDryRun",
                 "category": "SQLAnvil",
                 "title": "Show compiled query in vertical split",
                 "icon": "$(layout-centered)",
                 "group": "navigation@3"
             },
             {
-                "command": "vscode-dataform-tools.showCompiledQueryInWebView",
+                "command": "vscode-sqlanvil-tools.showCompiledQueryInWebView",
                 "category": "SQLAnvil",
                 "title": "Show compiled Query in web view"
             },
             {
-                "command": "vscode-dataform-tools.dependencyGraphPanel",
+                "command": "vscode-sqlanvil-tools.dependencyGraphPanel",
                 "category": "SQLAnvil",
                 "title": "Show dependency graph"
             },
             {
-                "command": "vscode-dataform-tools.dependencyInspector",
+                "command": "vscode-sqlanvil-tools.dependencyInspector",
                 "category": "SQLAnvil",
                 "title": "Open Dependency Inspector"
             },
             {
-                "command": "vscode-dataform-tools.formatDocument",
+                "command": "vscode-sqlanvil-tools.formatDocument",
                 "category": "SQLAnvil",
                 "title": "Format Document",
                 "icon": "$(sparkle)",
                 "group": "navigation@0"
             },
             {
-                "command": "vscode-dataform-tools.lintCurrentFile",
+                "command": "vscode-sqlanvil-tools.lintCurrentFile",
                 "category": "SQLAnvil",
                 "title": "Lint current file"
             },
             {
-                "command": "vscode-dataform-tools.selectWorkspaceFolder",
+                "command": "vscode-sqlanvil-tools.selectWorkspaceFolder",
                 "category": "SQLAnvil",
                 "title": "Select workspace folder"
             },
             {
-                "command": "vscode-dataform-tools.clearExtensionCache",
+                "command": "vscode-sqlanvil-tools.clearExtensionCache",
                 "category": "SQLAnvil",
                 "title": "Clear extension cache"
             },
             {
-                "command": "vscode-dataform-tools.runTests",
+                "command": "vscode-sqlanvil-tools.runTests",
                 "category": "SQLAnvil",
                 "title": "Run all tests"
             }
@@ -245,17 +245,17 @@
         "menus": {
             "editor/title": [
                 {
-                    "command": "vscode-dataform-tools.runCurrentFile",
+                    "command": "vscode-sqlanvil-tools.runCurrentFile",
                     "when": "resourceExtname == .sqlx || resourceExtname == .js",
                     "group": "navigation"
                 },
                 {
-                    "command": "vscode-dataform-tools.showCompiledQueryWtDryRun",
+                    "command": "vscode-sqlanvil-tools.showCompiledQueryWtDryRun",
                     "when": "resourceExtname == .sqlx || resourceExtname == .js",
                     "group": "navigation@3"
                 },
                 {
-                    "command": "vscode-dataform-tools.formatDocument",
+                    "command": "vscode-sqlanvil-tools.formatDocument",
                     "when": "resourceExtname == .sqlx || resourceExtname == .js",
                     "group": "navigation@0"
                 }
@@ -264,12 +264,12 @@
         "configuration": {
             "title": "SQLAnvil",
             "properties": {
-                "vscode-dataform-tools.compilerOptions": {
+                "vscode-sqlanvil-tools.compilerOptions": {
                     "type": "string",
                     "default": "",
                     "markdownDescription": "Addition compiler options to pass to dataform cli commands e.g. --vars=someKey=someValue,a=b"
                 },
-                "vscode-dataform-tools.currencyFoDryRunCost": {
+                "vscode-sqlanvil-tools.currencyFoDryRunCost": {
                     "type": "string",
                     "enum": [
                         "USD",
@@ -283,23 +283,23 @@
                     "default": "USD",
                     "markdownDescription": "Supported currencies for Dry Run cost estimation. Choose from USD (US Dollar), EUR (Euro), GBP (British Pound), JPY (Japanese Yen), CAD (Canadian Dollar), AUD (Australian Dollar), or INR (Indian Rupee)."
                 },
-                "vscode-dataform-tools.showCompiledQueryInVerticalSplitOnSave": {
+                "vscode-sqlanvil-tools.showCompiledQueryInVerticalSplitOnSave": {
                     "type": "boolean",
                     "default": true,
                     "markdownDescription": "Shows compiled sql query on veritcal split when `.sqlx` file is saved"
                 },
-                "vscode-dataform-tools.defaultDataformCompileTime": {
+                "vscode-sqlanvil-tools.defaultDataformCompileTime": {
                     "type": "string",
                     "default": "5m",
                     "pattern": "^(\\d+[sm])+$",
                     "markdownDescription": "Duration to allow project compilation to complete. Use format like '5m', '60s' etc. Passed to `dataform compile --json --timeout=<value>`"
                 },
-                "vscode-dataform-tools.gitRepoName": {
+                "vscode-sqlanvil-tools.gitRepoName": {
                     "type": "string",
                     "default": "",
                     "markdownDescription": "Override the repository name used by the extension. When set, this value is used instead of the name derived from the git remote URL or directory name."
                 },
-                "vscode-dataform-tools.formattingCli": {
+                "vscode-sqlanvil-tools.formattingCli": {
                     "type": "string",
                     "default": "sqlfluff",
                     "markdownDescription": "CLI to use for formatting. Choose between `sqlfluff` or `dataform`. NOTE:`dataform` cli does not support formatting individual files. It formats the entire project",
@@ -308,19 +308,19 @@
                         "dataform"
                     ]
                 },
-                "vscode-dataform-tools.sqlfluffConfigPath": {
+                "vscode-sqlanvil-tools.sqlfluffConfigPath": {
                     "type": "string",
-                    "default": ".vscode-dataform-tools/.sqlfluff",
+                    "default": ".vscode-sqlanvil-tools/.sqlfluff",
                     "description": "Path to sqlfluff config file. Please make sure your .sqlfluff is compatible with .sqlx files",
                     "pattern": "^$|.*\\/\\.sqlfluff$"
                 },
-                "vscode-dataform-tools.sqlfluffExecutablePath": {
+                "vscode-sqlanvil-tools.sqlfluffExecutablePath": {
                     "type": "string",
                     "default": "sqlfluff",
                     "description": "Path to sqlfluff executable",
                     "pattern": "^$|^.*sqlfluff(?:\\.exe)?$"
                 },
-                "vscode-dataform-tools.sourceAutoCompletionPreference": {
+                "vscode-sqlanvil-tools.sourceAutoCompletionPreference": {
                     "type": "string",
                     "enum": [
                         "${ref('table_name')}",
@@ -330,7 +330,7 @@
                     "default": "${ref('table_name')}",
                     "markdownDescription": "Preferred source autocompletion can be one of `${ref('table_name')}` or `${ref('dataset_name', 'table_name')}` or ${ref({schema:'dataset_name', name:'table_name'})}"
                 },
-                "vscode-dataform-tools.dataformCliScope": {
+                "vscode-sqlanvil-tools.dataformCliScope": {
                     "type": "string",
                     "enum": [
                         "global",
@@ -339,72 +339,72 @@
                     "default": "global",
                     "markdownDescription": "Dataform installation scope to use. Default to `global` which uses the dataform cli installed in global scope when running `dataform install -g @dataform/cli`. Selecting `local` scope would mean dataform cli installation in your workspace folder in `./node_modules/.bin/dataform` will be used. This is created when `npm install @dataform/cli` is ran from the root of the workspace folder."
                 },
-                "vscode-dataform-tools.dataformExecutablePath": {
+                "vscode-sqlanvil-tools.dataformExecutablePath": {
                     "type": "string",
                     "default": null,
                     "markdownDescription": "**Override path to dataform executable**\n\n⚠️ **Only use this if the extension cannot find dataform automatically**\n\nThe extension automatically searches:\n- System PATH\n- Common tool managers (mise, asdf, nvm, etc.)\n- Standard installation locations\n\nUse this setting for:\n- **Specific versions** for testing: `/path/to/dataform-v3.0.25`\n- **Company-approved versions**: `/opt/company-tools/dataform`\n- **Non-standard locations**: Custom installation paths\n\n**Example**: `/usr/local/bin/dataform` or `${HOME}/.local/share/mise/installs/npm-dataform-cli/3.0.26/bin/dataform`",
                     "pattern": "^$|^.*dataform(?:\\.cmd|\\.exe)?$"
                 },
-                "vscode-dataform-tools.gcloudExecutablePath": {
+                "vscode-sqlanvil-tools.gcloudExecutablePath": {
                     "type": "string",
                     "default": null,
                     "markdownDescription": "**Override path to gcloud executable**\n\n⚠️ **Only use this if the extension cannot find gcloud automatically**\n\nThe extension automatically searches:\n- System PATH\n- Common tool managers (mise, asdf, etc.)\n- Standard gcloud installation locations\n\nUse this setting for:\n- **Specific versions** for testing: `/path/to/gcloud-v530.0.0`\n- **Company-approved versions**: `/opt/company-tools/gcloud`\n- **Non-standard locations**: Custom installation paths\n\n**Example**: `/usr/local/bin/gcloud` or `${HOME}/google-cloud-sdk/bin/gcloud`",
                     "pattern": "^$|^.*gcloud(?:\\.cmd|\\.exe)?$"
                 },
-                "vscode-dataform-tools.compileAndDryRunBeforeFormatting": {
+                "vscode-sqlanvil-tools.compileAndDryRunBeforeFormatting": {
                     "type": "boolean",
                     "default": true,
                     "markdownDescription": "Disable this to experience faster formatting, especially if you have enabled format on save. `::WARNING::` only turn this on if you are confident that your query compiles without errors. Syntax error in config/pre/post operation blocks termination can result in unexpeted results while formatting"
                 },
-                "vscode-dataform-tools.bigqueryAuthenticationCheck": {
+                "vscode-sqlanvil-tools.bigqueryAuthenticationCheck": {
                     "type": "boolean",
                     "default": true,
                     "markdownDescription": "Uses an interval of 55 minutes to validate the user's BigQuery Credentials. Set this to `false` to only validate the user's credentials when a query or dry run fails"
                 },
-                "vscode-dataform-tools.recommendErrorLensExtension": {
+                "vscode-sqlanvil-tools.recommendErrorLensExtension": {
                     "type": "boolean",
                     "default": true,
                     "markdownDescription": "Whether to recommend Error Lens extension to show erorrs inline rather than showing them as swigly lines"
                 },
-                "vscode-dataform-tools.bigQueryTimeoutMs": {
+                "vscode-sqlanvil-tools.bigQueryTimeoutMs": {
                     "type": "number",
                     "default": 20000,
                     "minimum": 1000,
                     "maximum": 3600000,
                     "markdownDescription": "Timeout in milliseconds for BigQuery queries (max 1 hour)"
                 },
-                "vscode-dataform-tools.enableLogging": {
+                "vscode-sqlanvil-tools.enableLogging": {
                     "type": "boolean",
                     "default": false,
                     "markdownDescription": "Enable debug logging to help troubleshoot issues. Logs will appear in the 'Dataform Tools' output channel."
                 },
-                "vscode-dataform-tools.gcpProjectId": {
+                "vscode-sqlanvil-tools.gcpProjectId": {
                     "type": "string",
                     "default": null,
                     "markdownDescription": "GCP project ID to use for BigQuery queries. When not provided, the project ID will be inferred from your enviroment typically same as `gcloud config list project`",
                     "pattern": "^$|^[a-z0-9-]+$"
                 },
-                "vscode-dataform-tools.gcpLocation": {
+                "vscode-sqlanvil-tools.gcpLocation": {
                     "type": "string",
                     "default": null,
                     "markdownDescription": "GCP location to use for BigQuery queries. E.g. US, EU, us-central1, europe-west1. Usually you will not need to set this explicity as the location is picked up dynamically by BigQuery client."
                 },
-                "vscode-dataform-tools.serviceAccountJsonPath": {
+                "vscode-sqlanvil-tools.serviceAccountJsonPath": {
                     "type": "string",
                     "default": null,
                     "markdownDescription": "Path to the json file when the service account exsists"
                 },
-                "vscode-dataform-tools.skipPreOpsInDryRun": {
+                "vscode-sqlanvil-tools.skipPreOpsInDryRun": {
                     "type": "boolean",
                     "default": false,
                     "markdownDescription": "If enabled, pre-operations query will be excluded from the query used for dry run. By default, pre-operations are included. `::WARNING::` any variable used in pre-operations query will not be resolved and will result in an error"
                 },
-                "vscode-dataform-tools.skipPreOpsInPreviewQuery": {
+                "vscode-sqlanvil-tools.skipPreOpsInPreviewQuery": {
                     "type": "boolean",
                     "default": false,
                     "markdownDescription": "If enabled, the pre-operations (and incremental pre-operations) block is excluded from the query run by `Preview Data` / `Run`. Useful to preview a model's output without executing side effects such as `DELETE`/`MERGE` in `pre_operations`. By default, pre-operations are included."
                 },
-                "vscode-dataform-tools.formatOrdering": {
+                "vscode-sqlanvil-tools.formatOrdering": {
                     "type": "array",
                     "uniqueItems": true,
                     "minItems": 4,

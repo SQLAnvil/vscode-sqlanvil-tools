@@ -38,7 +38,7 @@ export class GitService {
             const gitBranch = await this.execCmd('git rev-parse --abbrev-ref HEAD') || undefined;
 
             const overrideRepoName = vscode.workspace
-                .getConfiguration('vscode-dataform-tools')
+                .getConfiguration('vscode-sqlanvil-tools')
                 .get<string>('gitRepoName')
                 ?.trim();
             if (overrideRepoName) {

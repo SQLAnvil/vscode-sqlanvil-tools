@@ -83,7 +83,7 @@ function extractDataformJsonFromMultipleJson(compiledString: string) {
 }
 
 export function getDataformCompilationTimeoutFromConfig() {
-    let dataformCompilationTimeoutVal: string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('defaultDataformCompileTime');
+    let dataformCompilationTimeoutVal: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('defaultDataformCompileTime');
     if (dataformCompilationTimeoutVal) {
         return dataformCompilationTimeoutVal;
     }
@@ -91,7 +91,7 @@ export function getDataformCompilationTimeoutFromConfig() {
 }
 
 export function getDataformCompilerOptions() {
-    let dataformCompilerOptions: string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('compilerOptions');
+    let dataformCompilerOptions: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('compilerOptions');
     if (dataformCompilerOptions) {
         return dataformCompilerOptions;
     }
@@ -100,7 +100,7 @@ export function getDataformCompilerOptions() {
 
 export function getDataformCliCmdBasedOnScope(workspaceFolder: string): string {
     const dataformCliBase = isRunningOnWindows ? 'dataform.cmd' : 'dataform';
-    const dataformCliScope: string | undefined = vscode.workspace.getConfiguration('vscode-dataform-tools').get('dataformCliScope');
+    const dataformCliScope: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('dataformCliScope');
     logger.debug(`Dataform CLI scope setting: ${dataformCliScope || 'not set (using global)'}`);
 
     if (dataformCliScope === 'local') {

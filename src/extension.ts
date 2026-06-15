@@ -98,17 +98,17 @@ export async function activate(context: vscode.ExtensionContext) {
 
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.runQuery', async () => {
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.runQuery', async () => {
             logger.info('Running query command');
             await previewQueryResults(queryResultsViewProvider);
         })
     );
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.dependencyGraphPanel', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.dependencyGraphPanel', async () => {
         createDependencyGraphPanel(context, vscode.ViewColumn.One);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.dependencyInspector', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.dependencyInspector', () => {
         const activeFilePath = vscode.window.activeTextEditor?.document?.uri?.fsPath;
         createDependencyInspectorPanel(context, activeFilePath ?? lastDataformFilePath);
     }));
@@ -130,13 +130,13 @@ export async function activate(context: vscode.ExtensionContext) {
 
     vscode.window.onDidChangeActiveTextEditor(debouncedActiveEditorChange, null, context.subscriptions);
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runTests', async (workspaceFolder: string) => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runTests', async (workspaceFolder: string) => {
         await runTests(workspaceFolder);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.cancelQuery', async () => { await cancelBigQueryJob(); }));
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.cancelQuery', async () => { await cancelBigQueryJob(); }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.selectWorkspaceFolder', async () => { await selectWorkspaceFolder(); }));
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.selectWorkspaceFolder', async () => { await selectWorkspaceFolder(); }));
 
     const assertionCodeLensProvider = new AssertionRunnerCodeLensProvider();
     context.subscriptions.push(
@@ -156,7 +156,7 @@ export async function activate(context: vscode.ExtensionContext) {
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.runAssertions', async () => {
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.runAssertions', async () => {
             let curFileMeta = await getCurrentFileMetadata(false);
             if (!curFileMeta?.fileMetadata) {
                 return;
@@ -204,7 +204,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.fixError',
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.fixError',
             async (document: vscode.TextDocument, range: vscode.Range, diagnosticMessage: string) => {
                 applyCodeActionUsingDiagnosticMessage(range, diagnosticMessage);
                 document.save();
@@ -221,7 +221,7 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(tagsAutoCompletionDisposable());
 
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.clearExtensionCache', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.clearExtensionCache', () => {
         const cachedKeys = context.globalState.keys().filter(key => key.startsWith('vscode_dataform_tools_'));
         cachedKeys.forEach(key => {
             context.globalState.update(key, undefined);
@@ -230,46 +230,46 @@ export async function activate(context: vscode.ExtensionContext) {
         vscode.window.showInformationMessage('Dataform Tools extension cache cleared.');
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runCurrentFile', () => { runCurrentFile(context, false, false, false, "cli"); }));
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runCurrentFileWtDeps', () => { runCurrentFile(context, true, false, false, "cli"); }));
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runCurrentFileWtDownstreamDeps', () => { runCurrentFile(context, false, true, false, "cli"); }));
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runCurrentFile', () => { runCurrentFile(context, false, false, false, "cli"); }));
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runCurrentFileWtDeps', () => { runCurrentFile(context, true, false, false, "cli"); }));
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runCurrentFileWtDownstreamDeps', () => { runCurrentFile(context, false, true, false, "cli"); }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runCurrentFileWtApi', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runCurrentFileWtApi', () => {
         let transitiveDependenciesIncluded = false;
         let transitiveDependentsIncluded = false;
         let fullyRefreshIncrementalTablesEnabled = false;
         runCurrentFile(context, transitiveDependenciesIncluded, transitiveDependentsIncluded, fullyRefreshIncrementalTablesEnabled, "api");
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runCurrentFileWtDependenciesApi', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runCurrentFileWtDependenciesApi', () => {
         let transitiveDependenciesIncluded = true;
         let transitiveDependentsIncluded = false;
         let fullyRefreshIncrementalTablesEnabled = false;
         runCurrentFile(context, transitiveDependenciesIncluded, transitiveDependentsIncluded, fullyRefreshIncrementalTablesEnabled, "api");
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runCurrentFileWtDependentsApi', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runCurrentFileWtDependentsApi', () => {
         let transitiveDependenciesIncluded = false;
         let transitiveDependentsIncluded = true;
         let fullyRefreshIncrementalTablesEnabled = false;
         runCurrentFile(context, transitiveDependenciesIncluded, transitiveDependentsIncluded, fullyRefreshIncrementalTablesEnabled, "api");
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runTagWtApi', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runTagWtApi', () => {
         let transitiveDependenciesIncluded = false;
         let transitiveDependentsIncluded = false;
         let fullyRefreshIncrementalTablesEnabled = false;
         runTag(context, transitiveDependenciesIncluded, transitiveDependentsIncluded, fullyRefreshIncrementalTablesEnabled, "api");
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runTagWtDependenciesApi', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runTagWtDependenciesApi', () => {
         let transitiveDependenciesIncluded = true;
         let transitiveDependentsIncluded = false;
         let fullyRefreshIncrementalTablesEnabled = false;
         runTag(context, transitiveDependenciesIncluded, transitiveDependentsIncluded, fullyRefreshIncrementalTablesEnabled, "api");
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runTagWtDependentsApi', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runTagWtDependentsApi', () => {
         let transitiveDependenciesIncluded = false;
         let transitiveDependentsIncluded = true;
         let fullyRefreshIncrementalTablesEnabled = false;
@@ -277,19 +277,19 @@ export async function activate(context: vscode.ExtensionContext) {
     }));
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.runFilesTagsWtOptions', () => { runFilesTagsWtOptions(context, "cli"); })
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.runFilesTagsWtOptions', () => { runFilesTagsWtOptions(context, "cli"); })
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.runFilesTagsWtOptionsApi', () => { runFilesTagsWtOptions(context, "api"); })
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.runFilesTagsWtOptionsApi', () => { runFilesTagsWtOptions(context, "api"); })
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.runFilesTagsWtOptionsInRemoteWorkspace', () => { runFilesTagsWtOptions(context, "api_workspace"); })
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.runFilesTagsWtOptionsInRemoteWorkspace', () => { runFilesTagsWtOptions(context, "api_workspace"); })
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.createNewDataformProject', createNewDataformProject)
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.createNewDataformProject', createNewDataformProject)
     );
 
     context.subscriptions.push(
@@ -305,25 +305,25 @@ export async function activate(context: vscode.ExtensionContext) {
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.showCompiledQueryWtDryRun', async (_editor) => {
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.showCompiledQueryWtDryRun', async (_editor) => {
             CompiledQueryPanel.getInstance(context.extensionUri, context, true, true, undefined);
         }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runTag', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runTag', async () => {
         let includeDependencies = false;
         let includeDependents = false;
         let fullRefresh = false;
         runTag(context, includeDependencies, includeDependents, fullRefresh, "cli");
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runTagWtDeps', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runTagWtDeps', async () => {
         let includeDependencies = true;
         let includeDependents = false;
         let fullRefresh = false;
         runTag(context, includeDependencies, includeDependents, fullRefresh, "cli");
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('vscode-dataform-tools.runTagWtDownstreamDeps', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runTagWtDownstreamDeps', async () => {
         let includeDependencies = false;
         let includeDependents = true;
         let fullRefresh = false;
@@ -345,7 +345,7 @@ export async function activate(context: vscode.ExtensionContext) {
     // Add logging to key operations
     context.subscriptions.push(
         vscode.workspace.onDidChangeConfiguration(e => {
-            if (e.affectsConfiguration('vscode-dataform-tools.enableLogging')) {
+            if (e.affectsConfiguration('vscode-sqlanvil-tools.enableLogging')) {
                 logger.initialize();
                 logger.info('Logging configuration updated');
             }
@@ -353,13 +353,13 @@ export async function activate(context: vscode.ExtensionContext) {
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.formatDocument', () => {
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.formatDocument', () => {
             vscode.commands.executeCommand('editor.action.formatDocument');
         })
     );
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-dataform-tools.lintCurrentFile', async () => {
+        vscode.commands.registerCommand('vscode-sqlanvil-tools.lintCurrentFile', async () => {
             if (diagnosticCollection) {
                 await lintCurrentFile(diagnosticCollection);
             }

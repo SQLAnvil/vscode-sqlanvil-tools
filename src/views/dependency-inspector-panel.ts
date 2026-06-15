@@ -314,7 +314,7 @@ export function createDependencyInspectorPanel(context: vscode.ExtensionContext,
                     panel.webview.postMessage({ type: 'filtersSavedToWorkspace', value: { modelFullId, ok: false, error: 'No Dataform workspace open' } });
                     return;
                 }
-                const dir = vscode.Uri.joinPath(vscode.Uri.file(ws), '.vscode-dataform-tools');
+                const dir = vscode.Uri.joinPath(vscode.Uri.file(ws), '.vscode-sqlanvil-tools');
                 const file = vscode.Uri.joinPath(dir, 'dependency-inspector-filters.json');
                 try {
                     const result = await withFilterFileLock(file, async () => {
@@ -366,7 +366,7 @@ export function createDependencyInspectorPanel(context: vscode.ExtensionContext,
                 if (!modelFullId) { return; }
                 const ws = await getWorkspaceFolder();
                 if (!ws) { return; }
-                const file = vscode.Uri.joinPath(vscode.Uri.file(ws), '.vscode-dataform-tools', 'dependency-inspector-filters.json');
+                const file = vscode.Uri.joinPath(vscode.Uri.file(ws), '.vscode-sqlanvil-tools', 'dependency-inspector-filters.json');
                 const data = await readFilterFile(file);
                 const list = data.filters[modelFullId] ?? [];
                 if (list.length === 0) { return; }
@@ -398,7 +398,7 @@ export function createDependencyInspectorPanel(context: vscode.ExtensionContext,
                     panel.webview.postMessage({ type: 'filtersLoadedFromWorkspace', value: { modelFullId, state: null, error: 'No Dataform workspace open' } });
                     return;
                 }
-                const file = vscode.Uri.joinPath(vscode.Uri.file(ws), '.vscode-dataform-tools', 'dependency-inspector-filters.json');
+                const file = vscode.Uri.joinPath(vscode.Uri.file(ws), '.vscode-sqlanvil-tools', 'dependency-inspector-filters.json');
                 const data = await readFilterFile(file);
                 let list = data.filters[modelFullId] ?? [];
                 if (list.length === 0) {
