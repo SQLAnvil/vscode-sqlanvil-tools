@@ -1,17 +1,14 @@
 {
-    "name": "dataform-lsp-vscode",
-    "displayName": "Dataform tools",
-    "publisher": "ashishalex",
+    "name": "sqlanvil-lsp-vscode",
+    "displayName": "SQLAnvil Tools",
+    "publisher": "sqlanvil",
     "icon": "media/images/dtools.png",
-    "description": "Compiled query, dry run stats, dependency graphs, inline diagnostics, run and preview models, cost estimation, go-to-definition, auto-completion, formatting using sqlfluff and more.",
+    "description": "SQLAnvil Tools for VS Code: compiled query, dry run stats, dependency graphs, inline diagnostics, run and preview models, cost estimation, go-to-definition, auto-completion, formatting using sqlfluff and more.",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ashish10alex/vscode-dataform-tools.git"
+        "url": "https://github.com/SQLAnvil/vscode-sqlanvil-tools.git"
     },
-    "version": "1.12.5",
-    "sponsor": {
-        "url": "https://buymeacoffee.com/ashishalexj"
-    },
+    "version": "0.1.0",
     "engines": {
         "vscode": "^1.89.0"
     },
@@ -36,7 +33,7 @@
             "panel": [
                 {
                     "id": "queryResultsContainer",
-                    "title": "Dataform tools",
+                    "title": "SQLAnvil Tools",
                     "icon": ""
                 }
             ]
@@ -47,7 +44,7 @@
                     "icon": "",
                     "type": "webview",
                     "id": "queryResultsView",
-                    "name": "Dataform tools"
+                    "name": "SQLAnvil Tools"
                 }
             ]
         },
@@ -68,152 +65,152 @@
         "commands": [
             {
                 "command": "vscode-dataform-tools.runQuery",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Preview query results"
             },
             {
                 "command": "vscode-dataform-tools.cancelQuery",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Cancel query"
             },
             {
                 "command": "vscode-dataform-tools.runFilesTagsWtOptions",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run file(s) / tag(s) with options"
             },
             {
                 "command": "vscode-dataform-tools.runFilesTagsWtOptionsApi",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run file(s) / tag(s) with options using API"
             },
             {
                 "command": "vscode-dataform-tools.createNewDataformProject",
-                "category": "Dataform",
-                "title": "create new Dataform project"
+                "category": "SQLAnvil",
+                "title": "create new SQLAnvil project"
             },
             {
                 "command": "vscode-dataform-tools.runTag",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run a tag"
             },
             {
                 "command": "vscode-dataform-tools.runTagWtDeps",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run a tag with dependencies"
             },
             {
                 "command": "vscode-dataform-tools.runTagWtDownstreamDeps",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run a tag with dependents"
             },
             {
                 "command": "vscode-dataform-tools.runTagWtApi",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run a tag using API"
             },
             {
                 "command": "vscode-dataform-tools.runTagWtDependenciesApi",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run tag with dependencies using API"
             },
             {
                 "command": "vscode-dataform-tools.runTagWtDependentsApi",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run tag with dependents using API"
             },
             {
                 "command": "vscode-dataform-tools.runAssertions",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run assertions in the current model"
             },
             {
                 "command": "vscode-dataform-tools.runCurrentFileWtDownstreamDeps",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run current file with dependents"
             },
             {
                 "command": "vscode-dataform-tools.runCurrentFile",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run current file",
                 "icon": "$(play)",
                 "group": "navigation"
             },
             {
                 "command": "vscode-dataform-tools.runCurrentFileWtDependenciesApi",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run current file with Dependencies using API",
                 "group": "navigation"
             },
             {
                 "command": "vscode-dataform-tools.runCurrentFileWtDependentsApi",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run current file with Dependents using API",
                 "group": "navigation"
             },
             {
                 "command": "vscode-dataform-tools.runFilesTagsWtOptionsInRemoteWorkspace",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run file(s) / tag(s) with options using API in remote workspace [beta]",
                 "group": "navigation"
             },
             {
                 "command": "vscode-dataform-tools.runCurrentFileWtApi",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run current file with API",
                 "group": "navigation"
             },
             {
                 "command": "vscode-dataform-tools.runCurrentFileWtDeps",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run current file with dependencies"
             },
             {
                 "command": "vscode-dataform-tools.showCompiledQueryWtDryRun",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Show compiled query in vertical split",
                 "icon": "$(layout-centered)",
                 "group": "navigation@3"
             },
             {
                 "command": "vscode-dataform-tools.showCompiledQueryInWebView",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Show compiled Query in web view"
             },
             {
                 "command": "vscode-dataform-tools.dependencyGraphPanel",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Show dependency graph"
             },
             {
                 "command": "vscode-dataform-tools.dependencyInspector",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Open Dependency Inspector"
             },
             {
                 "command": "vscode-dataform-tools.formatDocument",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Format Document",
                 "icon": "$(sparkle)",
                 "group": "navigation@0"
             },
             {
                 "command": "vscode-dataform-tools.lintCurrentFile",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Lint current file"
             },
             {
                 "command": "vscode-dataform-tools.selectWorkspaceFolder",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Select workspace folder"
             },
             {
                 "command": "vscode-dataform-tools.clearExtensionCache",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Clear extension cache"
             },
             {
                 "command": "vscode-dataform-tools.runTests",
-                "category": "Dataform",
+                "category": "SQLAnvil",
                 "title": "Run all tests"
             }
         ],
@@ -265,7 +262,7 @@
             ]
         },
         "configuration": {
-            "title": "Dataform",
+            "title": "SQLAnvil",
             "properties": {
                 "vscode-dataform-tools.compilerOptions": {
                     "type": "string",

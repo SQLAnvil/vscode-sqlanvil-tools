@@ -1,0 +1,10 @@
+SQLAnvil Tools
+Copyright (c) 2026 SQLAnvil
+
+This product is a derivative work of vscode-dataform-tools
+(https://github.com/ashish10alex/vscode-dataform-tools),
+Copyright (c) 2024 Ashish Alex, licensed under the MIT License.
+
+The original MIT license text is retained in the LICENSE file and continues
+to apply to the portions of this software derived from vscode-dataform-tools.
+Modifications for SQLAnvil are likewise distributed under the MIT License.

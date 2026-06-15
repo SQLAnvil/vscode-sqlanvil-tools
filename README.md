@@ -1,18 +1,12 @@
 <!-- markdownlint-disable MD041 -->
 <div align="center">
-  <h1>Dataform Tools</h1>
+  <h1>SQLAnvil Tools</h1>
 </div>
 
-Officially recommended [VS Code extension for Dataform](https://marketplace.visualstudio.com/items?itemName=ashishalex.dataform-lsp-vscode) by Google[^1] ✨. Supports [Dataform](https://github.com/dataform-co/dataform) versions 2.9.x and 3.x in all major operating systems. Works in: VS Code, Cursor, Antigravity.
+VS Code extension for [SQLAnvil](https://sqlanvil.com) — analytics engineering for Postgres &amp; Supabase with Dataform-style SQLX workflows. Compiled query previews, dependency graphs, inline diagnostics, run/preview models, formatting, go-to-definition and more. Works in: VS Code, Cursor, Antigravity.
 
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=nb_OFh6YgOc">
-    <img src="https://img.shields.io/badge/Watch_Installation_&_Demo-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube" height="25" style="margin-right: 10px;">
-  </a>
-  <a href="https://buymeacoffee.com/ashishalexj">
-    <img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy me a coffee" height="25">
-  </a>
-</div>
+> Forked from [`vscode-dataform-tools`](https://github.com/ashish10alex/vscode-dataform-tools) by Ashish Alex (MIT). See [`NOTICE`](./NOTICE) for attribution.
+
 <br>
 
 ![compilation](https://raw.githubusercontent.com/ashish10alex/vscode-dataform-tools/main/media/images/compiled_query_preview_dark.png#gh-dark-mode-only)
@@ -346,4 +340,3 @@ Most features can be invoked via the Command Palette by pressing <kbd>CTRL</kbd>
 
 * [ ] Handle case where user is not connected to internet or on vpn where network request for dry run cannot be made
 
-[^1]: [Link to confirmation of official recommendation by Google:](https://github.com/dataform-co/dataform/blob/main/vscode/README.md). Note that this is a community-led project and not an officially supported Google product.
