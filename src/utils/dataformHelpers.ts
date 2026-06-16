@@ -159,7 +159,7 @@ export async function getCurrentFileMetadata(freshCompilation: boolean): Promise
                         relativeFilePath: relativeFilePath
                     },
                     projectConfig: dataformCompiledJson.projectConfig,
-                    dataformCoreVersion: dataformCompiledJson.dataformCoreVersion,
+                    dataformCoreVersion: dataformCompiledJson.sqlanvilCoreVersion,
                     packageJsonContent: packageJsonContent
                 };
             } else if (fileMetadata?.queryMeta && fileMetadata.queryMeta.error !== "" && !isConfigFile) {
@@ -172,7 +172,7 @@ export async function getCurrentFileMetadata(freshCompilation: boolean): Promise
                     },
                     compilationTimeMs: compilationTimeMs,
                     projectConfig: dataformCompiledJson.projectConfig,
-                    dataformCoreVersion: dataformCompiledJson.dataformCoreVersion,
+                    dataformCoreVersion: dataformCompiledJson.sqlanvilCoreVersion,
                     packageJsonContent: packageJsonContent
                 };
             };
@@ -198,7 +198,7 @@ export async function getCurrentFileMetadata(freshCompilation: boolean): Promise
                 document: document,
                 compilationTimeMs: compilationTimeMs,
                 projectConfig: dataformCompiledJson.projectConfig,
-                dataformCoreVersion: dataformCompiledJson.dataformCoreVersion,
+                dataformCoreVersion: dataformCompiledJson.sqlanvilCoreVersion,
                 packageJsonContent: packageJsonContent
             };
         }
@@ -222,7 +222,7 @@ export async function getCurrentFileMetadata(freshCompilation: boolean): Promise
                 document: document,
                 compilationTimeMs: compilationTimeMs,
                 projectConfig: (dataformCompiledJson as any)?.projectConfig,
-                dataformCoreVersion: (dataformCompiledJson as any)?.dataformCoreVersion,
+                dataformCoreVersion: (dataformCompiledJson as any)?.sqlanvilCoreVersion,
                 packageJsonContent: packageJsonContent
             };
         }
@@ -261,7 +261,7 @@ export async function getCurrentFileMetadata(freshCompilation: boolean): Promise
             },
             document: document,
             projectConfig: CACHED_COMPILED_DATAFORM_JSON!.projectConfig,
-            dataformCoreVersion: CACHED_COMPILED_DATAFORM_JSON!.dataformCoreVersion,
+            dataformCoreVersion: CACHED_COMPILED_DATAFORM_JSON!.sqlanvilCoreVersion,
             packageJsonContent: packageJsonContent
         };
     }
@@ -597,5 +597,5 @@ export async function readDataformCoreVersion(
     }
   }
 
-  return configAsJson?.dataformCoreVersion;
+  return configAsJson?.sqlanvilCoreVersion;
 }

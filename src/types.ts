@@ -164,7 +164,7 @@ export interface DataformCompiledJson {
     graphErrors: GraphErrors;
     notebooks: Notebook[];
     tests: Test[];
-    dataformCoreVersion?: string;
+    sqlanvilCoreVersion?: string;
 }
 
 export interface DryRunError {
