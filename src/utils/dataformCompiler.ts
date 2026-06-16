@@ -83,7 +83,7 @@ function extractDataformJsonFromMultipleJson(compiledString: string) {
 }
 
 export function getDataformCompilationTimeoutFromConfig() {
-    let dataformCompilationTimeoutVal: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('defaultDataformCompileTime');
+    let dataformCompilationTimeoutVal: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('defaultSqlanvilCompileTime');
     if (dataformCompilationTimeoutVal) {
         return dataformCompilationTimeoutVal;
     }
@@ -99,21 +99,21 @@ export function getDataformCompilerOptions() {
 }
 
 export function getDataformCliCmdBasedOnScope(workspaceFolder: string): string {
-    const dataformCliBase = isRunningOnWindows ? 'dataform.cmd' : 'dataform';
-    const dataformCliScope: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('dataformCliScope');
-    logger.debug(`Dataform CLI scope setting: ${dataformCliScope || 'not set (using global)'}`);
+    const sqlanvilCliBase = isRunningOnWindows ? 'sqlanvil.cmd' : 'sqlanvil';
+    const sqlanvilCliScope: string | undefined = vscode.workspace.getConfiguration('vscode-sqlanvil-tools').get('sqlanvilCliScope');
+    logger.debug(`SQLAnvil CLI scope setting: ${sqlanvilCliScope || 'not set (using global)'}`);
 
-    if (dataformCliScope === 'local') {
-        const dataformCliLocalScopePath = isRunningOnWindows
-            ? path.join('node_modules', '.bin', 'dataform.cmd')
-            : path.join('node_modules', '.bin', 'dataform');
-        const fullLocalPath = path.join(workspaceFolder, dataformCliLocalScopePath);
-        logger.debug(`Using local dataform CLI: ${fullLocalPath}`);
+    if (sqlanvilCliScope === 'local') {
+        const sqlanvilCliLocalScopePath = isRunningOnWindows
+            ? path.join('node_modules', '.bin', 'sqlanvil.cmd')
+            : path.join('node_modules', '.bin', 'sqlanvil');
+        const fullLocalPath = path.join(workspaceFolder, sqlanvilCliLocalScopePath);
+        logger.debug(`Using local sqlanvil CLI: ${fullLocalPath}`);
         return fullLocalPath;
     }
 
-    const resolvedPath = findExecutableInPaths('dataform') || dataformCliBase;
-    logger.debug(`Using global dataform CLI: ${resolvedPath}`);
+    const resolvedPath = findExecutableInPaths('sqlanvil') || sqlanvilCliBase;
+    logger.debug(`Using global sqlanvil CLI: ${resolvedPath}`);
     return resolvedPath;
 }
 
@@ -166,15 +166,15 @@ export function compileDataform(workspaceFolder: string): Promise<{ compiledStri
 
                         let graphErrors = compiledJson?.graphErrors?.compilationErrors;
                         if (!graphErrors) {
-                            const dataformPackageJsonMissingHint = "(missing dataform.json file)";
-                            const dataformInstallHintv2 = "Could not find a recent installed version of @dataform/core in the project";
+                            const sqlanvilWorkflowSettingsMissingHint = "(missing workflow_settings.yaml file)";
+                            const sqlanvilInstallHintv2 = "Could not find a recent installed version of @sqlanvil/core in the project";
                             const possibleResolutions = [];
-                            if (errorOutput.includes(dataformPackageJsonMissingHint)) {
-                                possibleResolutions.push("Run `<b>dataform compile</b>` in terminal to get full error");
-                                possibleResolutions.push("Verify the dataform version of the project matches the version used in the project (<b>dataform --version</b> in terminal)");
-                                possibleResolutions.push("If your project is using dataform version 3.x run <b>npm i -g @dataform/cli</b> in terminal)");
-                            } else if (errorOutput.includes(dataformInstallHintv2)) {
-                                possibleResolutions.push("run `<b>dataform install</b>` in terminal followed by reload window and compile the file again");
+                            if (errorOutput.includes(sqlanvilWorkflowSettingsMissingHint)) {
+                                possibleResolutions.push("Run `<b>sqlanvil compile</b>` in terminal to get full error");
+                                possibleResolutions.push("Verify the sqlanvil version of the project matches the version used in the project (<b>sqlanvil --version</b> in terminal)");
+                                possibleResolutions.push("If your project is using sqlanvil run <b>npm i -g @sqlanvil/cli</b> in terminal)");
+                            } else if (errorOutput.includes(sqlanvilInstallHintv2)) {
+                                possibleResolutions.push("run `<b>sqlanvil install</b>` in terminal followed by reload window and compile the file again");
                             }
                             const endTime = performance.now();
                             resolve({ compiledString: undefined, errors: [{ error: `Error compiling Dataform: ${errorOutput}`, fileName: "" }], possibleResolutions: possibleResolutions, compilationTimeMs: endTime - startTime });
@@ -189,19 +189,19 @@ export function compileDataform(workspaceFolder: string): Promise<{ compiledStri
                         resolve({ compiledString: undefined, errors: errors, possibleResolutions: undefined, compilationTimeMs: endTime - startTime });
                     } else {
                         let possibleResolutions = [];
-                        const dataformInstallHintv3 = "If using `package.json`, then run `dataform install`";
+                        const dataformInstallHintv3 = "If using `package.json`, then run `sqlanvil install`";
                         if (errorOutput.includes(dataformInstallHintv3)) {
                             if (workspaceFolder) {
                                 const filePath = path.join(workspaceFolder, 'package.json');
                                 try {
                                     await vscode.workspace.fs.stat(vscode.Uri.file(filePath));
-                                    possibleResolutions.push("run `<b>dataform install</b>` in terminal");
+                                    possibleResolutions.push("run `<b>sqlanvil install</b>` in terminal");
                                 } catch (error) {
                                     vscode.window.showInformationMessage(`Error: ${error}`);
                                 }
                             }
                         } else if (errorOutput.includes(windowsDataformCliNotAvailableErrorMessage) || errorOutput.includes(linuxDataformCliNotAvailableErrorMessage)) {
-                            possibleResolutions.push("Run `<b>npm install -g @dataform/cli</b>` in terminal");
+                            possibleResolutions.push("Run `<b>npm install -g @sqlanvil/cli</b>` in terminal");
                         };
                         const endTime = performance.now();
                         resolve({ compiledString: undefined, errors: [{ error: `Error compiling Dataform: ${errorOutput}`, fileName: "" }], possibleResolutions: possibleResolutions, compilationTimeMs: endTime - startTime });

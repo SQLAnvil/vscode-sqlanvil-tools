@@ -223,7 +223,7 @@ export function debugExecutablePaths(): void {
     // Clear cache for fresh testing
     clearExecutablePathCache();
 
-    const executables: string[] = ['dataform', 'gcloud'];
+    const executables: string[] = ['sqlanvil', 'gcloud'];
     const results: string[] = [];
 
     executables.forEach(exe => {

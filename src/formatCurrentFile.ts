@@ -28,7 +28,7 @@ export async function formatDataformSqlxFile(document:vscode.TextDocument){
             );
             return [vscode.TextEdit.replace(entireRange, formattedText)];
         }
-    } else if (formattingCli === "dataform") {
+    } else if (formattingCli === "sqlanvil") {
         await formatCurrentFileWithDataform();
     }
     return [];
@@ -192,7 +192,7 @@ export async function formatCurrentFileWithDataform() {
     if (isRunningOnWindows) {
         workspaceFolder = path.win32.normalize(workspaceFolder);
     }
-    runCommandInTerminal(`dataform format ${workspaceFolder}`);
+    runCommandInTerminal(`sqlanvil format ${workspaceFolder}`);
 }
 
 interface SqlfluffViolation {

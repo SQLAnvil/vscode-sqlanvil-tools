@@ -4,12 +4,12 @@ import path from 'path';
 import { SupportedCurrency as SupportedCurrencies } from './types';
 const tempDir = os.tmpdir();
 export const sqlFileToFormatPath = path.join(tempDir, "format.sql");
-export const executablesToCheck: ('dataform' | 'gcloud')[] = ['dataform', 'gcloud'];
+export const executablesToCheck: ('sqlanvil' | 'gcloud')[] = ['sqlanvil', 'gcloud'];
 export const tableQueryOffset = 2;
 export const incrementalTableOffset = 1;
 export const assertionQueryOffset = 4;
-export const windowsDataformCliNotAvailableErrorMessage = "'dataform.cmd' is not recognized as an internal or external command";
-export const linuxDataformCliNotAvailableErrorMessage = "dataform: command not found";
+export const windowsDataformCliNotAvailableErrorMessage = "'sqlanvil.cmd' is not recognized as an internal or external command";
+export const linuxDataformCliNotAvailableErrorMessage = "sqlanvil: command not found";
 export const costInPoundsForOneGb = 0.005;
 export const getBigQueryTimeoutMs = () => vscode.workspace.getConfiguration("vscode-sqlanvil-tools").get<number>("bigQueryTimeoutMs") ?? 20000;
 

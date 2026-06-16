@@ -24,8 +24,7 @@
     ],
     "activationEvents": [
         "workspaceContains:**/*.sqlx",
-        "workspaceContains:**/workflow_settings.yaml",
-        "workspaceContains:**/dataform.json"
+        "workspaceContains:**/workflow_settings.yaml"
     ],
     "main": "./dist/extension.js",
     "contributes": {
@@ -267,7 +266,7 @@
                 "vscode-sqlanvil-tools.compilerOptions": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "Addition compiler options to pass to dataform cli commands e.g. --vars=someKey=someValue,a=b"
+                    "markdownDescription": "Additional compiler options to pass to sqlanvil cli commands e.g. --vars=someKey=someValue,a=b"
                 },
                 "vscode-sqlanvil-tools.currencyFoDryRunCost": {
                     "type": "string",
@@ -288,11 +287,11 @@
                     "default": true,
                     "markdownDescription": "Shows compiled sql query on veritcal split when `.sqlx` file is saved"
                 },
-                "vscode-sqlanvil-tools.defaultDataformCompileTime": {
+                "vscode-sqlanvil-tools.defaultSqlanvilCompileTime": {
                     "type": "string",
                     "default": "5m",
                     "pattern": "^(\\d+[sm])+$",
-                    "markdownDescription": "Duration to allow project compilation to complete. Use format like '5m', '60s' etc. Passed to `dataform compile --json --timeout=<value>`"
+                    "markdownDescription": "Duration to allow project compilation to complete. Use format like '5m', '60s' etc. Passed to `sqlanvil compile --json --timeout=<value>`"
                 },
                 "vscode-sqlanvil-tools.gitRepoName": {
                     "type": "string",
@@ -302,10 +301,10 @@
                 "vscode-sqlanvil-tools.formattingCli": {
                     "type": "string",
                     "default": "sqlfluff",
-                    "markdownDescription": "CLI to use for formatting. Choose between `sqlfluff` or `dataform`. NOTE:`dataform` cli does not support formatting individual files. It formats the entire project",
+                    "markdownDescription": "CLI to use for formatting. Choose between `sqlfluff` or `sqlanvil`. NOTE: the `sqlanvil` cli does not support formatting individual files. It formats the entire project",
                     "enum": [
                         "sqlfluff",
-                        "dataform"
+                        "sqlanvil"
                     ]
                 },
                 "vscode-sqlanvil-tools.sqlfluffConfigPath": {
@@ -330,20 +329,20 @@
                     "default": "${ref('table_name')}",
                     "markdownDescription": "Preferred source autocompletion can be one of `${ref('table_name')}` or `${ref('dataset_name', 'table_name')}` or ${ref({schema:'dataset_name', name:'table_name'})}"
                 },
-                "vscode-sqlanvil-tools.dataformCliScope": {
+                "vscode-sqlanvil-tools.sqlanvilCliScope": {
                     "type": "string",
                     "enum": [
                         "global",
                         "local"
                     ],
                     "default": "global",
-                    "markdownDescription": "Dataform installation scope to use. Default to `global` which uses the dataform cli installed in global scope when running `dataform install -g @dataform/cli`. Selecting `local` scope would mean dataform cli installation in your workspace folder in `./node_modules/.bin/dataform` will be used. This is created when `npm install @dataform/cli` is ran from the root of the workspace folder."
+                    "markdownDescription": "SQLAnvil CLI installation scope to use. Default to `global` which uses the sqlanvil cli installed in global scope when running `npm install -g @sqlanvil/cli`. Selecting `local` scope would mean the sqlanvil cli installation in your workspace folder in `./node_modules/.bin/sqlanvil` will be used. This is created when `npm install @sqlanvil/cli` is ran from the root of the workspace folder."
                 },
-                "vscode-sqlanvil-tools.dataformExecutablePath": {
+                "vscode-sqlanvil-tools.sqlanvilExecutablePath": {
                     "type": "string",
                     "default": null,
-                    "markdownDescription": "**Override path to dataform executable**\n\n⚠️ **Only use this if the extension cannot find dataform automatically**\n\nThe extension automatically searches:\n- System PATH\n- Common tool managers (mise, asdf, nvm, etc.)\n- Standard installation locations\n\nUse this setting for:\n- **Specific versions** for testing: `/path/to/dataform-v3.0.25`\n- **Company-approved versions**: `/opt/company-tools/dataform`\n- **Non-standard locations**: Custom installation paths\n\n**Example**: `/usr/local/bin/dataform` or `${HOME}/.local/share/mise/installs/npm-dataform-cli/3.0.26/bin/dataform`",
-                    "pattern": "^$|^.*dataform(?:\\.cmd|\\.exe)?$"
+                    "markdownDescription": "**Override path to the sqlanvil executable**\n\n⚠️ **Only use this if the extension cannot find sqlanvil automatically**\n\nThe extension automatically searches:\n- System PATH\n- Common tool managers (mise, asdf, nvm, etc.)\n- Standard installation locations\n\nUse this setting for:\n- **Specific versions** for testing: `/path/to/sqlanvil-v1.3.0`\n- **Company-approved versions**: `/opt/company-tools/sqlanvil`\n- **Non-standard locations**: Custom installation paths\n\n**Example**: `/usr/local/bin/sqlanvil`",
+                    "pattern": "^$|^.*sqlanvil(?:\\.cmd|\\.exe)?$"
                 },
                 "vscode-sqlanvil-tools.gcloudExecutablePath": {
                     "type": "string",
