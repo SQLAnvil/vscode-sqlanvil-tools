@@ -15,15 +15,15 @@ VS Code extension for [SQLAnvil](https://sqlanvil.com) — analytics engineering
 
 ## Installation
 
-1. Install the extension from the [marketplace](https://marketplace.visualstudio.com/items?itemName=ashishalex.dataform-lsp-vscode).
-2. [Install Dataform cli](https://cloud.google.com/dataform/docs/use-dataform-cli)
+1. Install the extension from the [marketplace](https://marketplace.visualstudio.com/items?itemName=sqlanvil.sqlanvil-lsp-vscode).
+2. Install the SQLAnvil CLI
 
    ```bash
    # requires nodejs & npm - https://nodejs.org/en/download
-   npm i -g @dataform/cli
+   npm i -g @sqlanvil/cli
    ```
 
-   Run `dataform compile` from the root of your Dataform project to ensure that you are able to use the cli.
+   Run `sqlanvil compile` from the root of your SQLAnvil project to ensure that you are able to use the cli.
 
 3. [Install gcloud cli](https://cloud.google.com/sdk/docs/install) and run
 
@@ -277,12 +277,12 @@ Most features can be invoked via the Command Palette by pressing <kbd>CTRL</kbd>
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">Dataform Tools</td>
-      <td><a href="https://marketplace.visualstudio.com/items?itemName=ashishalex.dataform-lsp-vscode">VS Code marketplace</a></td>
+      <td rowspan="2">SQLAnvil Tools</td>
+      <td><a href="https://marketplace.visualstudio.com/items?itemName=sqlanvil.sqlanvil-lsp-vscode">VS Code marketplace</a></td>
       <td>
-        <a href="https://marketplace.visualstudio.com/items?itemName=ashishalex.dataform-lsp-vscode">
-          <img src="https://img.shields.io/visual-studio-marketplace/v/ashishalex.dataform-lsp-vscode" alt="VS Code marketplace">
-          <img src="https://img.shields.io/vscode-marketplace/i/ashishalex.dataform-lsp-vscode.svg" alt="Downloads">
+        <a href="https://marketplace.visualstudio.com/items?itemName=sqlanvil.sqlanvil-lsp-vscode">
+          <img src="https://img.shields.io/visual-studio-marketplace/v/sqlanvil.sqlanvil-lsp-vscode" alt="VS Code marketplace">
+          <img src="https://img.shields.io/vscode-marketplace/i/sqlanvil.sqlanvil-lsp-vscode.svg" alt="Downloads">
         </a>
       </td>
       <td rowspan="2">VS Code extension — dependency graph, compiled query preview, dry-run stats, inline diagnostics, go-to-definition, autocomplete, formatting, and more. Same build is published to both the VS Code marketplace and Open VSX (for forks such as <a href="https://cursor.com">Cursor</a> and <a href="https://antigravity.google/">Antigravity</a>).</td>
