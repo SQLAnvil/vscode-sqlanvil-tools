@@ -94,7 +94,7 @@ export async function dryRunAndShowDiagnostics(curFileMeta: any, document: vscod
             shouldSkipAggregatePreOps ? Promise.resolve(emptyDryRunResponse) : queryDryRun(fileMetadata.queryMeta.preOpsQuery),
             // To enable to use of variables declared in preOps.
             // Would result in incorrect cost for post operation though a tradeoff Im willing to have atm
-            // See https://github.com/ashish10alex/vscode-dataform-tools/issues/175
+            // See https://github.com/SQLAnvil/vscode-sqlanvil-tools/issues/175
             (fileMetadata.queryMeta.postOpsQuery && fileMetadata.queryMeta.postOpsQuery !== "")
                 ? (shouldSkipAggregatePreOps ? Promise.resolve(emptyDryRunResponse) : queryDryRun(fileMetadata.queryMeta.preOpsQuery + fileMetadata.queryMeta.postOpsQuery))
                 : Promise.resolve(emptyDryRunResponse),

@@ -71,12 +71,12 @@ export function sendNotificationToUserOnExtensionUpdate(context: vscode.Extensio
 
     if (currentVersion !== lastVersion) {
         vscode.window.showInformationMessage(
-            `Dataform tools extension updated to version ${currentVersion}. Check out the new features!`,
+            `SQLAnvil Tools extension updated to version ${currentVersion}. Check out the new features!`,
             'View Changelog'
         ).then(selection => {
             if (selection === 'View Changelog') {
                 // Open changelog or release notes
-                vscode.env.openExternal(vscode.Uri.parse('https://github.com/ashish10alex/vscode-dataform-tools/releases'));
+                vscode.env.openExternal(vscode.Uri.parse('https://github.com/SQLAnvil/vscode-sqlanvil-tools/releases'));
             }
         });
         userConfig.lastVersion = currentVersion;

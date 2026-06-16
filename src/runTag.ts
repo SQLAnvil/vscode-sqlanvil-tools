@@ -116,7 +116,7 @@ export async function runTagWtApi(context: vscode.ExtensionContext, tagsToRun: s
     }
 
     if(!CACHED_COMPILED_DATAFORM_JSON){
-        vscode.window.showErrorMessage(`Unable to compile dataform project. Run "dataform compile" in the terminal to check`);
+        vscode.window.showErrorMessage(`Unable to compile dataform project. Run "sqlanvil compile" in the terminal to check`);
         return;
     }
 

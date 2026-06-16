@@ -102,7 +102,7 @@ export function registerCompiledQueryPanel(context: ExtensionContext) {
                 CompiledQueryPanel.getInstance(context.extensionUri, context, true, true, currentFileMetadata);
             } else {
                 showLoadingProgress(
-                    "Dataform tools\n",
+                    "SQLAnvil Tools\n",
                     async (progress) => {
                         progress.report({ message: "Generating compiled query metadata..." });
                         CompiledQueryPanel.getInstance(context.extensionUri, context, true, true, undefined);
@@ -186,7 +186,7 @@ export class CompiledQueryPanel {
 
             const panel = window.createWebviewPanel(
                 CompiledQueryPanel.viewType,
-                "Dataform Tools",
+                "SQLAnvil Tools",
                 { preserveFocus: true, viewColumn: vscode.ViewColumn.Beside },
                 {
                     enableFindWidget: true,
@@ -1288,7 +1288,7 @@ export class CompiledQueryPanel {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src ${webview.cspSource}; style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}'; font-src ${webview.cspSource};">
             <link href="${styleUri}" rel="stylesheet">
-            <title>Dataform Tools</title>
+            <title>SQLAnvil Tools</title>
         </head>
         <body>
             <div id="root"></div>

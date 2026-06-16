@@ -24,7 +24,7 @@ import { SkeletonLoader } from './components/SkeletonLoader';
 function HeaderRightActions() {
   return (
     <a
-      href="https://github.com/ashish10alex/vscode-dataform-tools/issues"
+      href="https://github.com/SQLAnvil/vscode-sqlanvil-tools/issues"
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center text-xs text-[var(--vscode-textPreformat-foreground)] hover:brightness-110"

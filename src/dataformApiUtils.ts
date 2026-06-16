@@ -284,7 +284,7 @@ export async function syncAndrunDataformRemotely(progress: vscode.Progress<{ mes
             if (dataformCompiledJson) {
                 CACHED_COMPILED_DATAFORM_JSON = dataformCompiledJson;
             } else {
-                vscode.window.showErrorMessage(`Unable to compile Dataform project. Run "dataform compile" in the terminal to check`);
+                vscode.window.showErrorMessage(`Unable to compile Dataform project. Run "sqlanvil compile" in the terminal to check`);
                 return;
             }
         } 

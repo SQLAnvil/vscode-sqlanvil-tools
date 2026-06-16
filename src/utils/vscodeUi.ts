@@ -9,7 +9,7 @@ export function showLoadingProgress<T extends any[]>(
         token: vscode.CancellationToken,
         ...args: T
     ) => Thenable<void>,
-    cancellationMessage: string = "Dataform tools: operation cancelled",
+    cancellationMessage: string = "SQLAnvil Tools: operation cancelled",
     ...args:any
 ): Thenable<void> {
     return vscode.window.withProgress(

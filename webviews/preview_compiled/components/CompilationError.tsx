@@ -119,7 +119,7 @@ export const CompilationError: React.FC<CompilationErrorProps> = ({ state }) => 
           <div>
             <h3 className="mt-0 mb-2 text-lg font-semibold text-[var(--vscode-inputValidation-errorForeground)]">Missing Required {missingExecutables.length > 1 ? 'CLIs' : 'CLI'}</h3>
             <p className="mt-0 mb-3 text-[var(--vscode-inputValidation-errorForeground)] opacity-90">The following mandatory {missingExecutables.length > 1 ? 'CLIs are' : 'CLI is'} not installed or not found in your system PATH: <b className="font-mono bg-[var(--vscode-editor-background)] opacity-50 px-1 rounded">{missingExecutables.join(', ')}</b></p>
-            <p className="mt-0 mb-4 text-[var(--vscode-inputValidation-errorForeground)] opacity-90"><a href="https://github.com/ashish10alex/vscode-dataform-tools?tab=readme-ov-file#installation" target="_blank" rel="noopener noreferrer" className="text-[var(--vscode-textLink-foreground)] underline hover:text-[var(--vscode-textLink-activeForeground)] font-medium">Installation steps on GitHub</a></p>
+            <p className="mt-0 mb-4 text-[var(--vscode-inputValidation-errorForeground)] opacity-90"><a href="https://github.com/SQLAnvil/vscode-sqlanvil-tools#installation" target="_blank" rel="noopener noreferrer" className="text-[var(--vscode-textLink-foreground)] underline hover:text-[var(--vscode-textLink-activeForeground)] font-medium">Installation steps on GitHub</a></p>
 
             <ol className="mt-0 list-decimal list-inside text-[var(--vscode-inputValidation-errorForeground)] opacity-90 space-y-3">
               {missingExecutables.includes('dataform') && (
@@ -127,7 +127,7 @@ export const CompilationError: React.FC<CompilationErrorProps> = ({ state }) => 
                   <b className="text-[var(--vscode-inputValidation-errorForeground)]">Dataform CLI</b> (requires Node.js)
                   <ul className="mt-2 ml-6 pl-3 border-l-2 border-[var(--vscode-inputValidation-errorBorder)] list-none space-y-2">
                     <li><code className="px-1.5 py-0.5 bg-[var(--vscode-editor-background)] opacity-50 rounded font-mono text-sm border border-[var(--vscode-widget-border)]">npm i -g @dataform/cli</code></li>
-                    <li>Run <code className="px-1.5 py-0.5 bg-[var(--vscode-editor-background)] opacity-50 rounded font-mono text-sm border border-[var(--vscode-widget-border)]">dataform compile</code> from the root of your project to verify</li>
+                    <li>Run <code className="px-1.5 py-0.5 bg-[var(--vscode-editor-background)] opacity-50 rounded font-mono text-sm border border-[var(--vscode-widget-border)]">sqlanvil compile</code> from the root of your project to verify</li>
                   </ul>
                 </li>
               )}
@@ -201,7 +201,7 @@ export const CompilationError: React.FC<CompilationErrorProps> = ({ state }) => 
                   clicking here
                 </a>
               </li>
-              <li>Check if running <code className="px-1.5 py-0.5 bg-[var(--vscode-editor-background)] opacity-50 rounded font-mono text-sm border border-[var(--vscode-widget-border)]">dataform compile</code> throws an error</li>
+              <li>Check if running <code className="px-1.5 py-0.5 bg-[var(--vscode-editor-background)] opacity-50 rounded font-mono text-sm border border-[var(--vscode-widget-border)]">sqlanvil compile</code> throws an error</li>
               <li>
                 Check if case of the file has been changed and the case does not match what is being shown in the error message above,
                 this is a known issue with VSCode <a href="https://github.com/microsoft/vscode/issues/123660" target="_blank" rel="noopener noreferrer" className="text-[var(--vscode-textLink-foreground)] underline hover:text-[var(--vscode-textLink-activeForeground)] font-medium">#123660</a>.
@@ -272,7 +272,7 @@ export const CompilationError: React.FC<CompilationErrorProps> = ({ state }) => 
           <p className="mt-3 mb-0 text-xs text-[var(--vscode-inputValidation-errorForeground)] opacity-60 italic">
             Run{' '}
             <code className="px-1 py-0.5 bg-[var(--vscode-editor-background)] opacity-70 rounded font-mono border border-[var(--vscode-widget-border)]">
-              dataform compile
+              sqlanvil compile
             </code>{' '}
             in the terminal for the full error output.
           </p>

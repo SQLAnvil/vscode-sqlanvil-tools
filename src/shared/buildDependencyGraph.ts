@@ -130,7 +130,7 @@ function populate(type: StructType, structs: AnyStruct[], state: PopulateState, 
 }
 
 /**
- * Pure transformation from a `dataform compile --json` payload into the
+ * Pure transformation from a `sqlanvil compile --json` payload into the
  * node/edge representation consumed by the dependency graph webview.
  *
  * No I/O, no VS Code APIs — safe to call from the extension, the CLI, or tests.

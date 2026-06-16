@@ -31,7 +31,7 @@ export async function runCurrentFile(context: vscode.ExtensionContext, includDep
 
         let {dataformCompiledJson, errors} = await runCompilation(workspaceFolder); // Takes ~1100ms
         if(errors && errors.length > 0){
-            vscode.window.showErrorMessage("Error compiling Dataform. Run `dataform compile` to see more details");
+            vscode.window.showErrorMessage("Error compiling Dataform. Run `sqlanvil compile` to see more details");
             return;
         }
         if (dataformCompiledJson) {
@@ -54,7 +54,7 @@ export async function runCurrentFile(context: vscode.ExtensionContext, includDep
 
         let dataformActionCmd = "";
 
-        // create the dataform run command for the list of actions from actionsList
+        // create the sqlanvil run command for the list of actions from actionsList
         dataformActionCmd = getDataformActionCmdFromActionList(actionsList, workspaceFolder, dataformCompilationTimeoutVal, includDependencies, includeDependents, fullRefresh);
         runCommandInTerminal(dataformActionCmd);
         return;

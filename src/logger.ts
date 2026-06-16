@@ -5,7 +5,7 @@ class Logger {
     private enabled: boolean;
 
     constructor() {
-        this.outputChannel = vscode.window.createOutputChannel('Dataform Tools');
+        this.outputChannel = vscode.window.createOutputChannel('SQLAnvil Tools');
         this.enabled = false;
     }
 

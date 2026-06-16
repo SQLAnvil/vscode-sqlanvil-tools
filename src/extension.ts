@@ -36,7 +36,7 @@ let lastDataformFilePath: string | undefined;
 export async function activate(context: vscode.ExtensionContext) {
     // Initialize logger at the start
     logger.initialize();
-    logger.info('Activating Dataform Tools extension');
+    logger.info('Activating SQLAnvil Tools extension');
 
     sendNotificationToUserOnExtensionUpdate(context);
 
@@ -227,7 +227,7 @@ export async function activate(context: vscode.ExtensionContext) {
             context.globalState.update(key, undefined);
             logger.info(`Cleared cached data for key: ${key}`);
         });
-        vscode.window.showInformationMessage('Dataform Tools extension cache cleared.');
+        vscode.window.showInformationMessage('SQLAnvil Tools extension cache cleared.');
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand('vscode-sqlanvil-tools.runCurrentFile', () => { runCurrentFile(context, false, false, false, "cli"); }));
@@ -333,7 +333,7 @@ export async function activate(context: vscode.ExtensionContext) {
     const errorLensExtensionInstalled = vscode.extensions.getExtension("usernamehw.errorlens");
     //NOTE: in wsl the extension is not visible in wsl remote by the api as it can be installed in client side (windows) if vscode thinks its is a UI based extension instead of workspace based
     if (!errorLensExtensionInstalled && !isWsl) {
-        const message = "The Dataform tools extension recommends installing the Error Lens extension to show error messages inline.";
+        const message = "The SQLAnvil Tools extension recommends installing the Error Lens extension to show error messages inline.";
         const installButton = "Install Error Lens";
         vscode.window.showInformationMessage(message, installButton).then(selection => {
             if (selection === installButton) {
@@ -377,12 +377,12 @@ export async function activate(context: vscode.ExtensionContext) {
         setAuthenticationCheckInterval(); // This will check the setting and set up interval if needed
     }
 
-    logger.info('Dataform Tools extension activated successfully');
+    logger.info('SQLAnvil Tools extension activated successfully');
 }
 
 // This method is called when your extension is deactivated
 export function deactivate() {
-    logger.info('Deactivating Dataform Tools extension');
+    logger.info('Deactivating SQLAnvil Tools extension');
     clearAuthenticationCheckInterval();
-    logger.info('Extension "vscode-dataform-tools" is now deactivated.');
+    logger.info('Extension "vscode-sqlanvil-tools" is now deactivated.');
 }
