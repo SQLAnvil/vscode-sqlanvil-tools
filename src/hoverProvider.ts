@@ -5,6 +5,7 @@ import {
   getTextByLineRange,
   getOrCompileDataformJson,
   formatTimestamp,
+  toPosixPath,
 } from "./utils";
 
 // the comment-parser library does not have types in it so we have ignore the typescript error
@@ -378,7 +379,8 @@ export class DataformHoverProvider implements vscode.HoverProvider {
       let operations = dataformCompiledJson?.operations;
       let assertions = dataformCompiledJson?.assertions;
 
-      let relativeFilePath = path.relative(workspaceFolder, document.uri.fsPath);
+      // Compiled fileNames are always "/"-separated; path.relative is not on Windows.
+      let relativeFilePath = toPosixPath(path.relative(workspaceFolder, document.uri.fsPath));
       const getHoverForTarget = (target: Target) => {
         const markdownTableIdWtLink = getMarkdownTableIdWtLink(target);
         return new vscode.Hover(new vscode.MarkdownString(`#### ${markdownTableIdWtLink}`));

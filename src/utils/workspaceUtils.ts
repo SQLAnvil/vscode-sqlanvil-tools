@@ -6,12 +6,16 @@ import { FileNameMetadataResult, FileNameMetadata } from '../types';
 
 const supportedExtensions = ['sqlx', 'js', 'yaml', 'json'];
 
+// Compiled graphs use "/" separators on every platform (sqlanvil core >= 1.34, upstream
+// dataform #2350), so every relative path we match against a compiled `fileName` must be POSIX
+// too — including on Windows, where asRelativePath / path.relative may hand back backslashes.
+export function toPosixPath(filePath: string) {
+    return filePath.replace(/\\/g, '/');
+}
+
 export function getRelativePath(filePath: string) {
     const fileUri = vscode.Uri.file(filePath);
-    let relativePath = vscode.workspace.asRelativePath(fileUri);
-    if (isRunningOnWindows) {
-        relativePath = path.win32.normalize(relativePath);
-    }
+    let relativePath = toPosixPath(vscode.workspace.asRelativePath(fileUri));
     const firstDefinitionIndex = relativePath.indexOf("definitions");
     if (firstDefinitionIndex !== -1) {
         relativePath = relativePath.slice(firstDefinitionIndex);
@@ -116,18 +120,13 @@ export async function getAllFilesWtAnExtension(workspaceFolder: string, extensio
     }
     let files = await vscode.workspace.findFiles(globPattern);
     const fileList = files.map((file) => {
+        // Always POSIX: these are matched against compiled `fileName`s (see toPosixPath).
+        const relativePath = toPosixPath(vscode.workspace.asRelativePath(file));
         if(trimInitial){
-            const pathParts = vscode.workspace.asRelativePath(file).split(path.posix.sep);
-            if(isRunningOnWindows){
-            return path.win32.normalize(pathParts.slice(1).join(path.win32.sep));
-            }
+            const pathParts = relativePath.split(path.posix.sep);
             return path.posix.normalize(pathParts.slice(1).join(path.posix.sep));
         }
-         const relativePath = vscode.workspace.asRelativePath(file);
-         if(isRunningOnWindows){
-             return path.win32.normalize(relativePath);
-         }
-         return relativePath;
+        return path.posix.normalize(relativePath);
     });
     return fileList;
 }
